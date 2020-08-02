@@ -1,14 +1,21 @@
 import * as React from 'react';
 import Head from 'next/head';
 // Material UI
+import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 import {Card, CardActionArea, Container, Grid} from '@material-ui/core';
 // Components
 import Spotlight from './components/Spotlight';
 import {Layout} from 'shared/components';
-// Styles
-import {useStyles} from './styles';
 
 const siteTitle = 'Vantage Game';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      backgroundColor: theme.palette.background.default,
+    },
+  })
+);
 
 const Home: React.FC = () => {
   const classes = useStyles();
