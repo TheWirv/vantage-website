@@ -6,7 +6,7 @@ export type StyleProps = {
   imageHeight: number;
 };
 
-export const useStyles = makeStyles(() =>
+const useStyles = makeStyles(() =>
   createStyles({
     container: {
       width: '100%',
@@ -34,3 +34,5 @@ export const useStyles = makeStyles(() =>
     },
   })
 );
+
+export default useStyles;

@@ -1,10 +1,12 @@
 import * as React from 'react';
 // Material UI
 import {Box, Typography} from '@material-ui/core';
+// Types
+import type {StyleProps} from './styles';
 // Hooks
 import {useScrollPosition, useComponentDimensions} from 'shared/hooks';
 // Styles
-import {useStyles, StyleProps} from './styles';
+import useStyles from './styles';
 
 const Spotlight: React.FC = () => {
   // Refs
