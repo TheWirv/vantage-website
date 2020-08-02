@@ -7,6 +7,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import type {AppProps} from 'next/app';
 // Styles
 import {theme} from 'shared/styles';
+import 'fontsource-roboto/latin-400-normal.css';
+import 'fontsource-roboto/latin-700-normal.css';
 
 const App = (props: AppProps) => {
   const {Component, pageProps} = props;

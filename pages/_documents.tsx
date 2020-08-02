@@ -3,8 +3,6 @@ import Document, {Html, Head, Main, NextScript} from 'next/document';
 import {ServerStyleSheets} from '@material-ui/core/styles';
 // Styles
 import {theme} from 'shared/styles';
-import 'fontsource-roboto/latin-400-normal.css';
-import 'fontsource-roboto/latin-700-normal.css';
 
 export default class MyDocument extends Document {
   render = () => (
