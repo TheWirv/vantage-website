@@ -5,7 +5,7 @@ import {Layout} from 'shared/components';
 
 const siteTitle = 'Vantage News';
 
-const NewsPost: React.FC = () => (
+const LoreEntry: React.FC = () => (
   <>
     <Head>
       <title>{siteTitle}</title>
@@ -18,4 +18,4 @@ const NewsPost: React.FC = () => (
   </>
 );
 
-export default NewsPost;
+export default LoreEntry;

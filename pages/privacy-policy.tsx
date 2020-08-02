@@ -5,9 +5,9 @@ import {Container} from '@material-ui/core';
 // Components
 import {Layout} from 'shared/components';
 
-const siteTitle = 'Team';
+const siteTitle = 'Privacy Policy';
 
-const News: React.FC = () => (
+const PrivacyPolicy: React.FC = () => (
   <>
     <Head>
       <title>{siteTitle}</title>
@@ -16,10 +16,10 @@ const News: React.FC = () => (
 
     <Layout>
       <Container>
-        <h1>You'll find info about the team here.</h1>
+        <h1>We value your privacy!</h1>
       </Container>
     </Layout>
   </>
 );
 
-export default News;
+export default PrivacyPolicy;

@@ -7,7 +7,7 @@ import {Layout} from 'shared/components';
 
 const siteTitle = 'Team';
 
-const News: React.FC = () => (
+const Team: React.FC = () => (
   <>
     <Head>
       <title>{siteTitle}</title>
@@ -22,4 +22,4 @@ const News: React.FC = () => (
   </>
 );
 
-export default News;
+export default Team;
