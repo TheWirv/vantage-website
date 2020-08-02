@@ -9,14 +9,6 @@ import {Layout} from 'shared/components';
 
 const siteTitle = 'Vantage Game';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      backgroundColor: theme.palette.background.default,
-    },
-  })
-);
-
 const Home: React.FC = () => {
   const classes = useStyles();
 
@@ -152,3 +144,11 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      backgroundColor: theme.palette.background.default,
+    },
+  })
+);
