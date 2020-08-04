@@ -4,13 +4,13 @@ import Head from 'next/head';
 import type {NewsPost} from '@vantage/types/news';
 import type {GetStaticProps} from 'next';
 // Lib
-import {getHomeNewsPosts} from '@vantage/lib/news';
+import {getAllNewsPosts} from '@vantage/lib/news';
 // Components
-import NewsExcerpt from './NewsExcerpt';
+import {NewsExcerpt} from 'page-components/news';
 import {Layout} from '@vantage/components';
 
 type Props = {
-  newsExcerpts: Omit<NewsPost, 'content'>[];
+  newsExcerpts: Array<Omit<NewsPost, 'content'>>;
 };
 
 const siteTitle = 'Vantage News';
@@ -30,7 +30,7 @@ const News: React.FC<Props> = (props) => (
 );
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const newsExcerpts = getHomeNewsPosts();
+  const newsExcerpts = getAllNewsPosts();
   return {
     props: {
       newsExcerpts,
