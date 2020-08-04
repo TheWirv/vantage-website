@@ -23,7 +23,7 @@ const Home: React.FC = () => {
         <Box className={classes.wrapper}>
           <Container className={classes.container}>
             <h1>
-              Welcome to <a href="https://nextjs.org">Next.js!</a>
+              Welcome to Vantage
             </h1>
 
             <p>

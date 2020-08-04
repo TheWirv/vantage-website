@@ -14,5 +14,11 @@ export const useStyles = makeStyles((theme: Theme) =>
         marginLeft: theme.spacing(2),
       },
     },
+    collapse: {
+      backgroundColor: theme.palette.background.default,
+    },
+    collapseLink: {
+      margin: theme.spacing(1),
+    },
   })
 );

@@ -1,6 +1,7 @@
 import * as React from 'react';
 // Material UI
 import {Box, Container, Fab, Typography} from '@material-ui/core';
+import {KeyboardArrowUp} from '@material-ui/icons';
 // Components
 import Header from '../Header';
 import Footer from '../Footer';
@@ -24,7 +25,7 @@ const Layout: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Header>Test</Header>
+      <Header />
       <Box component="main" className={classes.main}>
         {props.onHome ? (
           <>{props.children}</>
@@ -40,7 +41,7 @@ const Layout: React.FC<Props> = (props) => {
       <Footer />
       <ScrollToTop>
         <Fab color="primary" size="small" className={classes.fab} aria-label="scroll back to top">
-          ^
+          <KeyboardArrowUp />
         </Fab>
       </ScrollToTop>
     </>
