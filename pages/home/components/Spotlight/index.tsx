@@ -3,7 +3,7 @@ import * as React from 'react';
 import {makeStyles, createStyles} from '@material-ui/core/styles';
 import {Box, Typography} from '@material-ui/core';
 // Hooks
-import {useScrollPosition, useComponentDimensions} from 'shared/hooks';
+import {useScrollPosition, useComponentDimensions} from '@vantage/hooks';
 
 type StyleProps = {
   scrollPosition: number;

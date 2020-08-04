@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "date-fns": "^2.15.0",
     "fontsource-roboto": "^2.2.6",
+    "gray-matter": "^4.0.2",
     "next": "9.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",

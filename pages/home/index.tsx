@@ -2,10 +2,10 @@ import * as React from 'react';
 import Head from 'next/head';
 // Material UI
 import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
-import {Card, CardActionArea, Container, Grid} from '@material-ui/core';
+import {Box, Card, CardActionArea, Container, Grid} from '@material-ui/core';
 // Components
 import Spotlight from './components/Spotlight';
-import {Layout} from 'shared/components';
+import {Layout} from '@vantage/components';
 
 const siteTitle = 'Vantage Game';
 
@@ -18,10 +18,10 @@ const Home: React.FC = () => {
         <title>{siteTitle}</title>
         <meta name="og:title" content={siteTitle} />
       </Head>
-      <Layout>
+      <Layout onHome heading="">
         <Spotlight />
-        <div className={classes.container}>
-          <Container>
+        <Box className={classes.wrapper}>
+          <Container className={classes.container}>
             <h1>
               Welcome to <a href="https://nextjs.org">Next.js!</a>
             </h1>
@@ -137,7 +137,7 @@ const Home: React.FC = () => {
               </Grid>
             </Grid>
           </Container>
-        </div>
+        </Box>
       </Layout>
     </>
   );
@@ -147,8 +147,12 @@ export default Home;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    container: {
+    wrapper: {
       backgroundColor: theme.palette.background.default,
+    },
+    container: {
+      paddingBottom: theme.spacing(2),
+      paddingTop: theme.spacing(2),
     },
   })
 );

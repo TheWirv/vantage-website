@@ -1,6 +1,6 @@
 import * as React from 'react';
 // Components
-import {Link} from 'shared/components';
+import {Link} from '@vantage/components';
 // Styles
 import {useStyles} from './styles';
 

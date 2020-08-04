@@ -1,50 +1,42 @@
 import * as React from 'react';
 // Material UI
-import {Fab, Zoom, useScrollTrigger} from '@material-ui/core';
+import {Box, Container, Fab, Typography} from '@material-ui/core';
 // Components
 import Header from '../Header';
 import Footer from '../Footer';
+import ScrollToTop from './components/ScrollToTop';
 // Styles
 import {useStyles} from './styles';
 
 type Props = {
   children: React.ReactElement | React.ReactElement[];
+  heading: string;
+  onHome?: boolean;
 };
 
-const ScrollToTop: React.FC<{children: React.ReactElement}> = (props) => {
-  const classes = useStyles();
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 100,
-  });
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const anchor = ((event.target as HTMLDivElement).ownerDocument || document).querySelector(
-      '#back-to-top-anchor'
-    );
-
-    if (anchor) {
-      anchor.scrollIntoView({behavior: 'smooth', block: 'center'});
-    }
-  };
-
-  return (
-    <Zoom in={trigger}>
-      <div onClick={handleClick} role="presentation" className={classes.scrollToTop}>
-        {props.children}
-      </div>
-    </Zoom>
-  );
+export type StyleProps = {
+  onHome?: boolean;
 };
 
 const Layout: React.FC<Props> = (props) => {
-  const classes = useStyles();
-  console.log('props:', props);
+  const styleProps: StyleProps = {onHome: props.onHome};
+  const classes = useStyles(styleProps);
 
   return (
     <>
       <Header>Test</Header>
-      <main className={classes.main}>{props.children}</main>
+      <Box component="main" className={classes.main}>
+        {props.onHome ? (
+          <>{props.children}</>
+        ) : (
+          <Container className={classes.container}>
+            <Typography variant="h4" className={classes.title}>
+              {props.heading}
+            </Typography>
+            {props.children}
+          </Container>
+        )}
+      </Box>
       <Footer />
       <ScrollToTop>
         <Fab color="primary" size="small" className={classes.fab} aria-label="scroll back to top">

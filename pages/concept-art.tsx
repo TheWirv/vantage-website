@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Head from 'next/head';
 // Material UI
-import {Container} from '@material-ui/core';
+import {Typography} from '@material-ui/core';
 // Components
-import {Layout} from 'shared/components';
+import {Layout} from '@vantage/components';
 
 const siteTitle = 'Concept Art';
 
@@ -13,11 +13,8 @@ const ConceptArt: React.FC = () => (
       <title>{siteTitle}</title>
       <meta name="og:title" content={siteTitle} />
     </Head>
-
-    <Layout>
-      <Container>
-        <h1>You'll find a bunch of concept art here.</h1>
-      </Container>
+    <Layout heading="You'll find a bunch of concept art here.">
+      <Typography>Lorem Ipsum</Typography>
     </Layout>
   </>
 );

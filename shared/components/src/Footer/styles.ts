@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       bottom: 0,
       right: 0,
       left: 0,
-      height: theme.spacing(25),
+      height: theme.spacing(24),
       zIndex: -50,
       backgroundColor: theme.palette.grey[900],
     },

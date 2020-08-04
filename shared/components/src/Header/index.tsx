@@ -2,7 +2,7 @@ import * as React from 'react';
 // Material UI
 import {AppBar, Toolbar, Typography, useScrollTrigger} from '@material-ui/core';
 // Components
-import {Link} from 'shared/components';
+import Link from '../Link';
 import {HeaderLink} from './components';
 // Styles
 import {useStyles} from './styles';

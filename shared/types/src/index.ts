@@ -1,1 +1,1 @@
-export const test = 14;
+export * from './news';

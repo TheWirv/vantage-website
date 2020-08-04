@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Head from 'next/head';
+// Material UI
+import {Typography} from '@material-ui/core';
 // Components
-import {Layout} from 'shared/components';
+import {Layout} from '@vantage/components';
 
-const siteTitle = 'Vantage News';
+const siteTitle = 'Lore 1';
 
 const LoreEntry: React.FC = () => (
   <>
@@ -11,9 +13,8 @@ const LoreEntry: React.FC = () => (
       <title>{siteTitle}</title>
       <meta name="og:title" content={siteTitle} />
     </Head>
-
-    <Layout>
-      <h1>You'll find news here.</h1>
+    <Layout heading="Lore 1">
+      <Typography>Lorem Ipsum</Typography>
     </Layout>
   </>
 );
