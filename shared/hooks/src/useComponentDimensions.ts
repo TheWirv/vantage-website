@@ -1,4 +1,6 @@
 import * as React from 'react';
+// Hooks
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 const useComponentDimensions = (
   componentRef: React.MutableRefObject<HTMLElement> | React.RefObject<HTMLElement>
@@ -12,7 +14,7 @@ const useComponentDimensions = (
 
   const [dimensions, setDimensions] = React.useState(getDimensions());
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const handleResize = () => {
       const {width, height} = dimensions;
       const newDimensions = getDimensions();

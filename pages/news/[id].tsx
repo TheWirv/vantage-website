@@ -24,14 +24,14 @@ const NewsPost: React.FC<Props> = (props) => (
       <title>{props.data.title}</title>
       <meta name="og:title" content={props.data.title} />
     </Head>
-    <Layout heading={props.data.title}>
-      <Typography>{props.data.content}</Typography>
+    <Layout heading={props.data.title} component="article">
+      <section dangerouslySetInnerHTML={{__html: props.data.content}} />
     </Layout>
   </>
 );
 
 export const getStaticProps: GetStaticProps<Props, Id> = async (context) => {
-  const data = getPostData(context.params!.id);
+  const data = await getPostData(context.params!.id);
   return {
     props: {
       data,

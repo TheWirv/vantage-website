@@ -8,32 +8,17 @@ import {
   IconButton,
   Toolbar,
   Typography,
-  useScrollTrigger,
 } from '@material-ui/core';
 import {Menu} from '@material-ui/icons';
 // Components
 import Link from '../Link';
+import ElevateOnScroll from '../ElevateOnScroll';
 import {HeaderLink} from './components';
 // Styles
 import {useStyles} from './styles';
 
 type Props = {
   home?: boolean;
-};
-
-type ElevationScrollProps = {
-  children: React.ReactElement;
-};
-
-const ElevationScroll: React.FC<ElevationScrollProps> = (props) => {
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
-
-  return React.cloneElement(props.children, {
-    elevation: trigger ? 4 : 0,
-  });
 };
 
 const Header: React.FC<Props> = (props) => {
@@ -47,7 +32,7 @@ const Header: React.FC<Props> = (props) => {
 
   return (
     <>
-      <ElevationScroll {...props}>
+      <ElevateOnScroll {...props}>
         <AppBar position="fixed">
           <Toolbar variant="dense" className={classes.toolbar}>
             <Typography variant="h6" className={classes.title}>
@@ -89,7 +74,7 @@ const Header: React.FC<Props> = (props) => {
             <Backdrop open={isMenuOpenend} transitionDuration={400} onClick={toggleMenu} />
           </Hidden>
         </AppBar>
-      </ElevationScroll>
+      </ElevateOnScroll>
       <Toolbar id="back-to-top-anchor" />
     </>
   );

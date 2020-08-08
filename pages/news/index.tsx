@@ -23,14 +23,14 @@ const News: React.FC<Props> = (props) => (
     </Head>
     <Layout heading="You'll find news here.">
       {props.newsExcerpts.map((newsExcerpt) => (
-        <NewsExcerpt newsExcerpt={newsExcerpt} />
+        <NewsExcerpt key={newsExcerpt.id} newsExcerpt={newsExcerpt} />
       ))}
     </Layout>
   </>
 );
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const newsExcerpts = getAllNewsPosts();
+  const newsExcerpts = await getAllNewsPosts();
   return {
     props: {
       newsExcerpts,

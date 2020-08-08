@@ -15,7 +15,7 @@ const NewsExcerpt: React.FC<Props> = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} component="article">
       <Typography variant="h5">
         <Link href="/news/[id]" as={`/news/${props.newsExcerpt.id}`}>
           {props.newsExcerpt.title}
@@ -26,7 +26,7 @@ const NewsExcerpt: React.FC<Props> = (props) => {
         <Date dateString={props.newsExcerpt.date} />
         {` by ${props.newsExcerpt.author}`}
       </Typography>
-      <Typography>{props.newsExcerpt.excerpt}</Typography>
+      <section dangerouslySetInnerHTML={{__html: props.newsExcerpt.excerpt}} />
     </Card>
   );
 };

@@ -7,9 +7,8 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     main: {
       marginBottom: theme.spacing(24),
-      boxShadow: theme.shadows[4],
       backgroundColor: (props: StyleProps) =>
-        !props.onHome ? theme.palette.background.default : undefined,
+        !props.onHome ? theme.palette.background.default : '#0000',
     },
     fab: {
       transition: `background-color ${theme.transitions.duration.short}s ${theme.transitions.easing.easeOut}`,
