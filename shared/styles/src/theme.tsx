@@ -8,6 +8,15 @@ const theme = createMuiTheme({
         color: '#efefef',
       },
     },
+    MuiBreadcrumbs: {
+      root: {
+        color: 'rgba(255, 255, 255, 0.7)',
+      },
+      separator: {
+        marginLeft: 0,
+        marginRight: 0,
+      },
+    },
   },
   palette: {
     type: 'dark',
@@ -15,9 +24,9 @@ const theme = createMuiTheme({
       primary: '#efefef',
     },
     primary: {
-      light: '#f06449',
-      main: '#c5371c',
-      dark: '#891d08',
+      light: '#fdad46',
+      main: '#d08729',
+      dark: '#935b12',
       contrastText: '#efefef',
     },
   },

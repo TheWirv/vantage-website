@@ -1,18 +1,21 @@
 import * as React from 'react';
 // Material UI
-import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 import {Card, Typography} from '@material-ui/core';
 // Types
 import type {NewsPost} from '@vantage/types/news';
 // Components
 import {Date, Link} from '@vantage/components';
+// Styles
+import {useStyles, StyleProps} from './styles';
 
 type Props = {
   newsExcerpt: Omit<NewsPost, 'content'>;
+  isLast: boolean;
 };
 
 const NewsExcerpt: React.FC<Props> = (props) => {
-  const classes = useStyles();
+  const styleProps: StyleProps = {isLast: props.isLast};
+  const classes = useStyles(styleProps);
 
   return (
     <Card className={classes.card} component="article">
@@ -32,14 +35,3 @@ const NewsExcerpt: React.FC<Props> = (props) => {
 };
 
 export default NewsExcerpt;
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    card: {
-      padding: theme.spacing(2),
-    },
-    subtitle: {
-      color: theme.palette.text.secondary,
-    },
-  })
-);

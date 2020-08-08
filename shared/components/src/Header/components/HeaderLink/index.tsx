@@ -13,7 +13,11 @@ const HeaderLink: React.FC<Props> = (props) => {
   const classes = useStyles();
 
   return (
-    <Link href={props.href} underline="none" className={classes.link}>
+    <Link
+      href={props.href}
+      underline="none"
+      className={classes.link}
+      activeClassName={classes.active}>
       {props.children}
     </Link>
   );

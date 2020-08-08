@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import type {AppProps} from 'next/app';
 // Styles
 import {theme} from '@vantage/styles';
+import 'keen-slider/keen-slider.min.css';
 import 'fontsource-roboto/latin-400-normal.css';
 import 'fontsource-roboto/latin-700-normal.css';
 

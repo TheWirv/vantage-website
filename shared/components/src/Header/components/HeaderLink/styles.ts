@@ -25,5 +25,16 @@ export const useStyles = makeStyles((theme: Theme) =>
         left: 0,
       },
     },
+    active: {
+      color: theme.palette.primary.main,
+      '&::after': {
+        borderTop: `.1rem solid ${theme.palette.primary.main}`,
+        position: 'absolute',
+        right: 0,
+        bottom: '-.1rem',
+        left: 0,
+        content: '""',
+      },
+    },
   })
 );

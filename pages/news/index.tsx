@@ -4,7 +4,7 @@ import Head from 'next/head';
 import type {NewsPost} from '@vantage/types/news';
 import type {GetStaticProps} from 'next';
 // Lib
-import {getAllNewsPosts} from '@vantage/lib/news';
+import {getAllPosts} from '@vantage/lib/news';
 // Components
 import {NewsExcerpt} from 'page-components/news';
 import {Layout} from '@vantage/components';
@@ -22,15 +22,19 @@ const News: React.FC<Props> = (props) => (
       <meta name="og:title" content={siteTitle} />
     </Head>
     <Layout heading="You'll find news here.">
-      {props.newsExcerpts.map((newsExcerpt) => (
-        <NewsExcerpt key={newsExcerpt.id} newsExcerpt={newsExcerpt} />
+      {props.newsExcerpts.map((newsExcerpt, index) => (
+        <NewsExcerpt
+          key={newsExcerpt.id}
+          newsExcerpt={newsExcerpt}
+          isLast={index === props.newsExcerpts.length - 1}
+        />
       ))}
     </Layout>
   </>
 );
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const newsExcerpts = await getAllNewsPosts();
+  const newsExcerpts = await getAllPosts();
   return {
     props: {
       newsExcerpts,

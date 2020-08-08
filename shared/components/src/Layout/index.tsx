@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useRouter} from 'next/router';
 // Material UI
 import {Container, Fab, Paper, Typography} from '@material-ui/core';
 import {KeyboardArrowUp} from '@material-ui/icons';
@@ -6,7 +7,7 @@ import {KeyboardArrowUp} from '@material-ui/icons';
 import Header from '../Header';
 import Footer from '../Footer';
 import ElevateOnScroll from '../ElevateOnScroll';
-import ScrollToTop from './components/ScrollToTop';
+import {Breadcrumbs, ScrollToTop} from './components';
 // Styles
 import {useStyles} from './styles';
 
@@ -25,22 +26,29 @@ const Layout: React.FC<Props> = (props) => {
   const styleProps: StyleProps = {onHome: props.onHome};
   const classes = useStyles(styleProps);
 
+  const router = useRouter();
+  const rootRoute = router.pathname.split('/').filter((x) => x)[0];
+  const newsHeading: string | undefined = rootRoute === 'news' ? props.heading : undefined;
+
   return (
     <>
       <Header />
       <ElevateOnScroll>
-        <Paper component="main" square className={classes.main}>
-          {props.onHome ? (
-            <>{props.children}</>
-          ) : (
-            <Container className={classes.container} component={props.component ?? 'div'}>
-              <Typography variant="h4" className={classes.title}>
-                {props.heading}
-              </Typography>
-              {props.children}
-            </Container>
-          )}
-        </Paper>
+        <>
+          <Paper component="main" square className={classes.main}>
+            {props.onHome ? (
+              <>{props.children}</>
+            ) : (
+              <Container className={classes.container} component={props.component ?? 'div'}>
+                <Breadcrumbs newsHeading={newsHeading} />
+                <Typography variant="h4" className={classes.title}>
+                  {props.heading}
+                </Typography>
+                {props.children}
+              </Container>
+            )}
+          </Paper>
+        </>
       </ElevateOnScroll>
       <Footer />
       <ScrollToTop>

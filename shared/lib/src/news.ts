@@ -10,9 +10,9 @@ type MatterData = Pick<NewsPost, 'date' | 'title' | 'author'>;
 
 const postsDirectory = path.join(process.cwd(), 'data/news');
 
-export const getHomeNewsPosts = async () => (await getAllNewsPosts()).slice(0, 3);
+export const getHomePosts = async () => (await getAllPosts()).slice(0, 3);
 
-export const getNewsPostIds = (): Array<{id: string}> => {
+export const getIds = (): Array<{id: string}> => {
   // Get file names under ./data
   const fileNames = fs.readdirSync(postsDirectory);
 
@@ -21,18 +21,18 @@ export const getNewsPostIds = (): Array<{id: string}> => {
   }));
 };
 
-export const getAllNewsPosts = async () => {
+export const getAllPosts = async () => {
   // Get file names under ./data
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = await Promise.all(
-    fileNames.map((fileName) => getPostExcerptData(fileName.replace(/\.md$/, '')))
+    fileNames.map((fileName) => getExcerptData(fileName.replace(/\.md$/, '')))
   );
 
   // Sort posts by date
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
-export const getPostExcerptData = async (id: string): Promise<Omit<NewsPost, 'content'>> => {
+export const getExcerptData = async (id: string): Promise<Omit<NewsPost, 'content'>> => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 

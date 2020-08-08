@@ -1,12 +1,10 @@
 import * as React from 'react';
 import Head from 'next/head';
-// Material UI
-import {Typography} from '@material-ui/core';
 // Types
 import type {NewsPost as NewsPostType} from '@vantage/types/news';
 import type {GetStaticProps, GetStaticPaths} from 'next';
 // Lib
-import {getPostData, getNewsPostIds} from '@vantage/lib/news';
+import {getPostData, getIds} from '@vantage/lib/news';
 // Components
 import {Layout} from '@vantage/components';
 
@@ -40,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props, Id> = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths<Id> = async () => {
-  const paths = getNewsPostIds().map((id) => ({params: id}));
+  const paths = getIds().map((id) => ({params: id}));
   return {
     paths,
     fallback: false,
