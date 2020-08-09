@@ -19,6 +19,7 @@ type Props = {
 const siteTitle = 'Vantage Game';
 
 const Home: React.FC<Props> = (props) => {
+  const [marginTop, setMarginTop] = React.useState<string>();
   const classes = useStyles();
 
   return (
@@ -27,8 +28,8 @@ const Home: React.FC<Props> = (props) => {
         <title>{siteTitle}</title>
         <meta name="og:title" content={siteTitle} />
       </Head>
-      <Layout onHome heading="">
-        <Spotlight />
+      <Layout onHome heading="" marginTop={marginTop}>
+        <Spotlight setMarginTop={setMarginTop} />
         <Box className={classes.wrapper}>
           <Container className={classes.container}>
             <Typography variant="h5">News</Typography>
@@ -54,6 +55,8 @@ export default Home;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     wrapper: {
+      position: 'relative',
+      zIndex: 0,
       backgroundColor: theme.palette.background.default,
     },
     container: {

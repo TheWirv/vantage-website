@@ -1,16 +1,19 @@
 // Material UI
-import {makeStyles, createStyles} from '@material-ui/core/styles';
+import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 
 export type StyleProps = {
   scrollPosition: number;
   imageHeight: number;
 };
 
-export const useStyles = makeStyles(() =>
+export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
+      position: 'fixed',
+      top: 0,
       width: '100%',
       height: (props: StyleProps) => `${props.imageHeight * (2 / 3)}px`,
+      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2.4}px)`,
     },
     overlay: {
       position: 'absolute',
@@ -22,15 +25,15 @@ export const useStyles = makeStyles(() =>
       zIndex: -90,
     },
     image: {
-      position: 'absolute',
+      position: 'fixed',
       top: 0,
       width: '100%',
       zIndex: -100,
-      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 3}px)`,
+      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2}px)`,
     },
     title: {
+      zIndex: -80,
       fontSize: (props: StyleProps) => `${props.imageHeight / 7.5}px`,
-      transform: (props: StyleProps) => `translateY(${props.scrollPosition * (1 / 2.55)}px)`,
     },
   })
 );

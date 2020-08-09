@@ -9,21 +9,19 @@ import Footer from '../Footer';
 import ElevateOnScroll from '../ElevateOnScroll';
 import {Breadcrumbs, ScrollToTop} from './components';
 // Styles
-import {useStyles} from './styles';
+import {useStyles, StyleProps} from './styles';
 
 type Props = {
   children: React.ReactElement | React.ReactElement[];
   heading: string;
   component?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
   onHome?: boolean;
-};
-
-export type StyleProps = {
-  onHome?: boolean;
+  marginTop?: string;
 };
 
 const Layout: React.FC<Props> = (props) => {
-  const styleProps: StyleProps = {onHome: props.onHome};
+  const {onHome, marginTop} = props;
+  const styleProps: StyleProps = {onHome, marginTop};
   const classes = useStyles(styleProps);
 
   const router = useRouter();
@@ -35,7 +33,7 @@ const Layout: React.FC<Props> = (props) => {
       <Header />
       <ElevateOnScroll>
         <>
-          <Paper component="main" square className={classes.main}>
+          <Paper component="main" square className={classes.main} elevation={0}>
             {props.onHome ? (
               <>{props.children}</>
             ) : (

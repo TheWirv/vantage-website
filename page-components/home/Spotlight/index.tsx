@@ -2,11 +2,15 @@ import * as React from 'react';
 // Material UI
 import {Box, Typography} from '@material-ui/core';
 // Hooks
-import {useScrollPosition, useComponentDimensions} from '@vantage/hooks';
+import {useScrollPosition, useComponentDimensions, useIsomorphicLayoutEffect} from '@vantage/hooks';
 // Styles
 import {useStyles, StyleProps} from './styles';
 
-const Spotlight: React.FC = () => {
+type Props = {
+  setMarginTop: React.Dispatch<React.SetStateAction<string | undefined>>;
+};
+
+const Spotlight: React.FC<Props> = (props) => {
   // Refs
   const imageRef = React.createRef<HTMLImageElement>();
 
@@ -15,6 +19,10 @@ const Spotlight: React.FC = () => {
   const {height: imageHeight} = useComponentDimensions(imageRef);
   const styleProps: StyleProps = {scrollPosition, imageHeight};
   const classes = useStyles(styleProps);
+
+  useIsomorphicLayoutEffect(() => {
+    props.setMarginTop(`${imageHeight * (2 / 3)}px`);
+  }, [imageHeight]);
 
   return (
     <>
@@ -29,10 +37,6 @@ const Spotlight: React.FC = () => {
         component="section"
         className={classes.container}
         display="flex"
-        flexBasis={1}
-        flex={1}
-        flexGrow={1}
-        flexShrink={1}
         alignItems="center"
         justifyContent="center">
         <Typography className={classes.title}>Vantage</Typography>

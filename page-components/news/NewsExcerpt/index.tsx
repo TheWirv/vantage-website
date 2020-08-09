@@ -14,7 +14,8 @@ type Props = {
 };
 
 const NewsExcerpt: React.FC<Props> = (props) => {
-  const styleProps: StyleProps = {isLast: props.isLast};
+  const {isLast} = props;
+  const styleProps: StyleProps = {isLast};
   const classes = useStyles(styleProps);
 
   return (
