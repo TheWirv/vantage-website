@@ -24,12 +24,12 @@ const useComponentDimensions = (
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('load', handleResize);
-
     if (componentRef.current) {
       handleResize();
     }
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('load', handleResize);
 
     return () => {
       window.removeEventListener('load', handleResize);
