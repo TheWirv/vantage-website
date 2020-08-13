@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 // Material UI
-import {ThemeProvider} from '@material-ui/core/styles';
+import {ThemeProvider, StylesProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // Types
 import type {AppProps} from 'next/app';
@@ -17,13 +17,15 @@ const App = (props: AppProps) => {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
+    console.log('jssStyles:', jssStyles);
     if (jssStyles) {
       jssStyles.parentElement!.removeChild(jssStyles);
+      jssStyles.parentNode!.removeChild(jssStyles);
     }
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Vantage Game" />
@@ -31,11 +33,13 @@ const App = (props: AppProps) => {
         <meta property="og:image" content="/images/car-on-fire.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
+      <StylesProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </StylesProvider>
+    </React.Fragment>
   );
 };
 

@@ -50,7 +50,7 @@ const Link: React.FC<LinkProps> = (props) => {
   const router = useRouter();
   const href = (typeof hrefProp === 'string' ? hrefProp : hrefProp.pathname) as string;
   const isActive = _getRootPathname(router.pathname) === _getRootPathname(href);
-  const className = clsx(classNameProps, classes.link, {
+  const className = clsx(classes.link, classNameProps, {
     [activeClassName]: isActive && activeClassName,
   });
 
