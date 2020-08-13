@@ -10,6 +10,10 @@ import {theme} from '@vantage/styles';
 import 'keen-slider/keen-slider.min.css';
 import 'fontsource-roboto/latin-400-normal.css';
 import 'fontsource-roboto/latin-700-normal.css';
+import 'fontsource-lemonada/latin-400-normal.css';
+import 'fontsource-lemonada/latin-700-normal.css';
+import 'fontsource-cinzel-decorative/latin-400-normal.css';
+import 'fontsource-cinzel-decorative/latin-700-normal.css';
 
 const App = (props: AppProps) => {
   const {Component, pageProps} = props;

@@ -3207,6 +3207,16 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
+fontsource-cinzel-decorative@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/fontsource-cinzel-decorative/-/fontsource-cinzel-decorative-3.0.5.tgz#e771b59a4560c153658ec02d6ceabe22f67f2e26"
+  integrity sha512-ekGq5pSG94UAAVjrX3+gfBQqYPWk0a3YD83jIbQlz7bw+fjZUrECzp5kEIiDmpahr4YPj7Rf1bKiNiHdCoKYpg==
+
+fontsource-lemonada@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/fontsource-lemonada/-/fontsource-lemonada-3.0.5.tgz#cf474687abd5ca86f80cb0c8fa37786e18be0ad0"
+  integrity sha512-HlkFj00MOyAkpITJxicltgULqBHynSGnH2+CMZeYTQ3fwJ2ofNFhuPonBrbG95C9puKGh/U3vGB0T8VL13u+Ag==
+
 fontsource-roboto@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/fontsource-roboto/-/fontsource-roboto-2.2.6.tgz#187f009aa490b85156c4db3d2b6b5080412f6b01"

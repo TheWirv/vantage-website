@@ -6,7 +6,7 @@ import html from 'remark-html';
 // types
 import type {NewsPost} from '@vantage/types/news';
 
-type MatterData = Pick<NewsPost, 'date' | 'title' | 'author'>;
+type MatterData = Pick<NewsPost, 'date' | 'title'>;
 
 const postsDirectory = path.join(process.cwd(), 'data/news');
 

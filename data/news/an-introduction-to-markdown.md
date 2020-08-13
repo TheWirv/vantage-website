@@ -1,7 +1,6 @@
 ---
 title: 'An Introduction to Markdown'
 date: '2004-12-17T00:00:00.158Z'
-author: 'John Gruber'
 ---
 
 Markdown is a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).

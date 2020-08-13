@@ -18,7 +18,6 @@ const NewsItem: React.FC<Props> = (props) => {
   return (
     <Card className={clsx(`keen-slider__slide number-slide${props.index + 1}`, classes.card)}>
       <Typography>{props.newsExcerpt.title}</Typography>
-      <Typography>{props.newsExcerpt.author}</Typography>
       <section dangerouslySetInnerHTML={{__html: props.newsExcerpt.excerpt}} />
     </Card>
   );

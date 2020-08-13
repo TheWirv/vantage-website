@@ -39,7 +39,9 @@ const Spotlight: React.FC<Props> = (props) => {
         display="flex"
         alignItems="center"
         justifyContent="center">
-        <Typography className={classes.title}>Vantage</Typography>
+        <Typography variant="h4" className={classes.title}>
+          Vantage
+        </Typography>
       </Box>
     </>
   );

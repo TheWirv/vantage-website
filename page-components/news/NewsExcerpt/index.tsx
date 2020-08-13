@@ -28,7 +28,6 @@ const NewsExcerpt: React.FC<Props> = (props) => {
       <Typography variant="subtitle2" className={classes.subtitle}>
         {'written on '}
         <Date dateString={props.newsExcerpt.date} />
-        {` by ${props.newsExcerpt.author}`}
       </Typography>
       <section dangerouslySetInnerHTML={{__html: props.newsExcerpt.excerpt}} />
     </Card>

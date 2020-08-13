@@ -41,6 +41,27 @@ const theme = createMuiTheme({
       leavingScreen: 0.195,
     },
   },
+  typography: {
+    fontFamily: '"Lemonada", "Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontFamily: '"Cinzel Decorative", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+    h2: {
+      fontFamily: '"Cinzel Decorative", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+    h3: {
+      fontFamily: '"Cinzel Decorative", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+    h4: {
+      fontFamily: '"Cinzel Decorative", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+    h5: {
+      fontFamily: '"Cinzel Decorative", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+    h6: {
+      fontFamily: '"Cinzel Decorative", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+  },
 });
 
 export default theme;
