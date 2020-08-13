@@ -40,7 +40,7 @@ export const getExcerptData = async (id: string): Promise<Omit<NewsPost, 'conten
   const matterResult = matter(fileContents);
   const {content} = matterResult;
 
-  let index = content.indexOf(' ', 250);
+  let index = content.indexOf(' ', 450);
   if (content.charAt(index - 1).match(/[\-–—]/)) {
     index -= 2;
   }

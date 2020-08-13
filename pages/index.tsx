@@ -42,7 +42,7 @@ const Home: React.FC<Props> = (props) => {
       <Layout onHome heading="" marginTop={marginTop}>
         <Spotlight setMarginTop={setMarginTop} />
         <Box className={classes.wrapper}>
-          <Container ref={newsSliderRef} className={classes.container}>
+          <Container maxWidth="md" ref={newsSliderRef} className={classes.container}>
             <Typography variant="h5">News</Typography>
             <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
           </Container>

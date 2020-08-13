@@ -28,7 +28,7 @@ const Spotlight: React.FC<Props> = (props) => {
     <>
       <img
         ref={imageRef}
-        src="/images/car-on-fire.jpg"
+        src="/images/vantage-map.png"
         className={classes.image}
         alt="Vantage Game"
       />

@@ -37,7 +37,10 @@ const Layout: React.FC<Props> = (props) => {
             {props.onHome ? (
               <>{props.children}</>
             ) : (
-              <Container className={classes.container} component={props.component ?? 'div'}>
+              <Container
+                maxWidth="md"
+                className={classes.container}
+                component={props.component ?? 'div'}>
                 <Breadcrumbs newsHeading={newsHeading} />
                 <Typography variant="h4" className={classes.title}>
                   {props.heading}
