@@ -8,6 +8,8 @@ import type {NewsPost} from '@vantage/types/news';
 import type {GetStaticProps} from 'next';
 // Lib
 import {getHomePosts} from '@vantage/lib/news';
+// Hooks
+import {useComponentDimensions} from '@vantage/hooks';
 // Components
 import {Spotlight, NewsCarousel} from 'page-components/home';
 import {Layout} from '@vantage/components';
@@ -19,7 +21,16 @@ type Props = {
 const siteTitle = 'Vantage Game';
 
 const Home: React.FC<Props> = (props) => {
+  // Refs
+  const newsSliderRef = React.createRef<HTMLDivElement>();
+
+  // State
   const [marginTop, setMarginTop] = React.useState<string>();
+
+  // Hooks
+  const {width: newsSliderWidth} = useComponentDimensions(newsSliderRef);
+
+  // Styles
   const classes = useStyles();
 
   return (
@@ -31,9 +42,9 @@ const Home: React.FC<Props> = (props) => {
       <Layout onHome heading="" marginTop={marginTop}>
         <Spotlight setMarginTop={setMarginTop} />
         <Box className={classes.wrapper}>
-          <Container className={classes.container}>
+          <Container ref={newsSliderRef} className={classes.container}>
             <Typography variant="h5">News</Typography>
-            <NewsCarousel newsExcerpts={props.newsExcerpts} />
+            <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
           </Container>
         </Box>
       </Layout>
