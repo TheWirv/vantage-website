@@ -12,8 +12,8 @@ export const useStyles = makeStyles(() =>
       position: 'fixed',
       top: 0,
       width: '100%',
-      height: (props: StyleProps) => `${props.imageHeight * (2 / 3)}px`,
-      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2.4}px)`,
+      // height: (props: StyleProps) => `${props.imageHeight * (2 / 3)}px`,
+      // transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2.4}px)`,
     },
     overlay: {
       position: 'absolute',
@@ -33,7 +33,7 @@ export const useStyles = makeStyles(() =>
     },
     title: {
       zIndex: -80,
-      fontSize: (props: StyleProps) => `${props.imageHeight / 7.5}px`,
+      // fontSize: (props: StyleProps) => `${props.imageHeight / 7.5}px`,
     },
   })
 );

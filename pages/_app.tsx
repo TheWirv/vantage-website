@@ -17,10 +17,9 @@ const App = (props: AppProps) => {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
-    console.log('jssStyles:', jssStyles);
+
     if (jssStyles) {
       jssStyles.parentElement!.removeChild(jssStyles);
-      jssStyles.parentNode!.removeChild(jssStyles);
     }
   }, []);
 

@@ -51,7 +51,7 @@ const Link: React.FC<LinkProps> = (props) => {
   const href = (typeof hrefProp === 'string' ? hrefProp : hrefProp.pathname) as string;
   const isActive = _getRootPathname(router.pathname) === _getRootPathname(href);
   const className = clsx(classes.link, classNameProps, {
-    [activeClassName]: isActive && activeClassName,
+    [activeClassName]: isActive,
   });
 
   // catch role passed from ButtonBase. This is definitely a link
