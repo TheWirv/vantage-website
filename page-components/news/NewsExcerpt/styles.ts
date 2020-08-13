@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
       padding: theme.spacing(1),
-      // marginBottom: (props: StyleProps) => (props.isLast ? 0 : theme.spacing(2)),
+      marginBottom: (props: StyleProps) => (props.isLast ? 0 : theme.spacing(2)),
     },
     subtitle: {
       color: theme.palette.text.secondary,
