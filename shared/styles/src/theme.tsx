@@ -42,7 +42,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: '"Lemonada", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Lora", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontFamily: '"Cinzel Decorative", "Roboto", "Helvetica", "Arial", sans-serif',
     },

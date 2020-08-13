@@ -3217,6 +3217,11 @@ fontsource-lemonada@^3.0.5:
   resolved "https://registry.yarnpkg.com/fontsource-lemonada/-/fontsource-lemonada-3.0.5.tgz#cf474687abd5ca86f80cb0c8fa37786e18be0ad0"
   integrity sha512-HlkFj00MOyAkpITJxicltgULqBHynSGnH2+CMZeYTQ3fwJ2ofNFhuPonBrbG95C9puKGh/U3vGB0T8VL13u+Ag==
 
+fontsource-lora@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/fontsource-lora/-/fontsource-lora-3.0.5.tgz#883ba1b49d61f76e03aec4fd96b21d370fbfb57d"
+  integrity sha512-MYTngSDt4VtVatu4ewDCqBerwXBTOPPH9MWPI3Ps1XCsw3V2/4fl+DUD2AfdWxeCnuTxUSBspYAV+y7WuMQ+cg==
+
 fontsource-roboto@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/fontsource-roboto/-/fontsource-roboto-2.2.6.tgz#187f009aa490b85156c4db3d2b6b5080412f6b01"
