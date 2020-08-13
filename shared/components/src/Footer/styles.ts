@@ -13,8 +13,10 @@ export const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.grey[900],
     },
     container: {
-      paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(4),
+      padding: theme.spacing(4, 2),
+      [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(4, 3),
+      },
     },
   })
 );

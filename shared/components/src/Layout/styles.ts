@@ -18,12 +18,13 @@ export const useStyles = makeStyles((theme: Theme) =>
       transition: `background-color ${theme.transitions.duration.short}s ${theme.transitions.easing.easeOut}`,
     },
     container: {
-      paddingBottom: theme.spacing(2),
-      paddingTop: theme.spacing(2),
+      padding: theme.spacing(2, 2),
+      [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(2, 3),
+      },
     },
     title: {
-      marginBottom: theme.spacing(2),
-      marginTop: theme.spacing(2),
+      margin: theme.spacing(2, 0),
     },
   })
 );

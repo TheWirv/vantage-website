@@ -43,8 +43,19 @@ const Home: React.FC<Props> = (props) => {
         <Spotlight setMarginTop={setMarginTop} />
         <Box className={classes.wrapper}>
           <Container maxWidth="md" ref={newsSliderRef} className={classes.container}>
-            <Typography variant="h5">News</Typography>
+            <Typography variant="h5" className={classes.subsectionHeading}>
+              News
+            </Typography>
             <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
+            <Typography variant="h5" className={classes.subsectionHeading}>
+              Lore
+            </Typography>
+            <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
+            <Typography variant="h5" className={classes.subsectionHeading}>
+              Concept Art
+            </Typography>
+            <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
+            <Typography>Wanna join the team? Here's our Discord:</Typography>
           </Container>
         </Box>
       </Layout>
@@ -71,8 +82,13 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.background.default,
     },
     container: {
-      paddingBottom: theme.spacing(2),
-      paddingTop: theme.spacing(2),
+      padding: theme.spacing(2, 2),
+      [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(2, 3),
+      },
+    },
+    subsectionHeading: {
+      marginBottom: theme.spacing(1),
     },
   })
 );
