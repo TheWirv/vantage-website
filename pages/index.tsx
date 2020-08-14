@@ -3,19 +3,23 @@ import Head from 'next/head';
 // Material UI
 import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 import {Box, Container, Typography} from '@material-ui/core';
-// Types
-import type {NewsPost} from '@vantage/types/news';
+// Types and type guards
+import type {ConceptArtPath, LoreEntry, NewsPost} from '@vantage/types';
 import type {GetStaticProps} from 'next';
 // Lib
+import {getHomeConceptArt} from '@vantage/lib/concept-art';
+import {getHomeLoreEntries} from '@vantage/lib/lore';
 import {getHomePosts} from '@vantage/lib/news';
 // Hooks
 import {useComponentDimensions} from '@vantage/hooks';
 // Components
-import {Spotlight, NewsCarousel} from 'page-components/home';
+import {Spotlight, ContentSection} from 'page-components/home';
 import {Layout} from '@vantage/components';
 
 type Props = {
   newsExcerpts: Array<Omit<NewsPost, 'content'>>;
+  loreEntries: Array<Omit<LoreEntry, 'content'>>;
+  conceptArtPaths: ConceptArtPath[];
 };
 
 const siteTitle = 'Vantage Game';
@@ -23,9 +27,6 @@ const siteTitle = 'Vantage Game';
 const Home: React.FC<Props> = (props) => {
   // Refs
   const newsSliderRef = React.createRef<HTMLDivElement>();
-
-  // State
-  const [marginTop, setMarginTop] = React.useState<string>();
 
   // Hooks
   const {width: newsSliderWidth} = useComponentDimensions(newsSliderRef);
@@ -39,22 +40,25 @@ const Home: React.FC<Props> = (props) => {
         <title>{siteTitle}</title>
         <meta name="og:title" content={siteTitle} />
       </Head>
-      <Layout onHome heading="" marginTop={marginTop}>
-        <Spotlight setMarginTop={setMarginTop} />
+      <Layout onHome heading="">
+        <Spotlight />
         <Box className={classes.wrapper}>
           <Container maxWidth="md" ref={newsSliderRef} className={classes.container}>
-            <Typography variant="h5" className={classes.subsectionHeading}>
-              News
-            </Typography>
-            <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
-            <Typography variant="h5" className={classes.subsectionHeading}>
-              Lore
-            </Typography>
-            <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
-            <Typography variant="h5" className={classes.subsectionHeading}>
-              Concept Art
-            </Typography>
-            <NewsCarousel newsExcerpts={props.newsExcerpts} containerWidth={newsSliderWidth} />
+            <ContentSection
+              type="News"
+              containerWidth={newsSliderWidth}
+              content={props.newsExcerpts}
+            />
+            <ContentSection
+              type="Lore"
+              containerWidth={newsSliderWidth}
+              content={props.loreEntries}
+            />
+            <ContentSection
+              type="Concept Art"
+              containerWidth={newsSliderWidth}
+              content={props.conceptArtPaths}
+            />
             <Typography>Wanna join the team? Here's our Discord:</Typography>
           </Container>
         </Box>
@@ -65,9 +69,13 @@ const Home: React.FC<Props> = (props) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const newsExcerpts = await getHomePosts();
+  const loreEntries = await getHomeLoreEntries();
+  const conceptArtPaths = getHomeConceptArt();
   return {
     props: {
       newsExcerpts,
+      loreEntries,
+      conceptArtPaths,
     },
   };
 };
@@ -86,9 +94,6 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up('sm')]: {
         padding: theme.spacing(2, 3),
       },
-    },
-    subsectionHeading: {
-      marginBottom: theme.spacing(1),
     },
   })
 );

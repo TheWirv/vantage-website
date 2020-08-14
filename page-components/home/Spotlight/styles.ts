@@ -1,39 +1,40 @@
 // Material UI
-import {makeStyles, createStyles} from '@material-ui/core/styles';
+import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 
 export type StyleProps = {
   scrollPosition: number;
   imageHeight: number;
 };
 
-export const useStyles = makeStyles(() =>
+export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
       position: 'fixed',
-      top: 0,
+      top: 48,
       width: '100%',
-      height: (props: StyleProps) => `${props.imageHeight * (2 / 3)}px`,
-      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2.4}px)`,
-    },
-    overlay: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
       backgroundColor: '#08080888',
-      zIndex: -90,
+      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2.4}px)`,
+      height: '25vh',
+      [theme.breakpoints.up('sm')]: {
+        height: '33vh',
+      },
+      [theme.breakpoints.up('md')]: {
+        height: '50vh',
+      },
+      [theme.breakpoints.up('lg')]: {
+        height: '75vh',
+      },
     },
     image: {
       position: 'fixed',
-      top: 0,
+      top: 48,
       width: '100%',
       zIndex: -100,
       transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2}px)`,
     },
     title: {
       zIndex: -80,
-      fontSize: (props: StyleProps) => `${props.imageHeight / 7.5}px`,
+      fontSize: (props: StyleProps) => `${props.imageHeight / 8.5}px`,
     },
   })
 );

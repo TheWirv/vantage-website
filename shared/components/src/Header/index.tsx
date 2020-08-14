@@ -75,7 +75,7 @@ const Header: React.FC<Props> = (props) => {
           </Hidden>
         </AppBar>
       </ElevateOnScroll>
-      <Toolbar id="back-to-top-anchor" />
+      <Toolbar variant="dense" id="back-to-top-anchor" />
     </>
   );
 };

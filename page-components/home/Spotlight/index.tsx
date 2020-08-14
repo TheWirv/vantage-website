@@ -6,11 +6,7 @@ import {useScrollPosition, useComponentDimensions, useIsomorphicLayoutEffect} fr
 // Styles
 import {useStyles, StyleProps} from './styles';
 
-type Props = {
-  setMarginTop: React.Dispatch<React.SetStateAction<string | undefined>>;
-};
-
-const Spotlight: React.FC<Props> = (props) => {
+const Spotlight: React.FC = () => {
   // Refs
   const imageRef = React.createRef<HTMLImageElement>();
 
@@ -20,10 +16,6 @@ const Spotlight: React.FC<Props> = (props) => {
   const styleProps: StyleProps = {scrollPosition, imageHeight};
   const classes = useStyles(styleProps);
 
-  useIsomorphicLayoutEffect(() => {
-    props.setMarginTop(`${imageHeight * (2 / 3)}px`);
-  }, [imageHeight]);
-
   return (
     <>
       <img
@@ -32,7 +24,6 @@ const Spotlight: React.FC<Props> = (props) => {
         className={classes.image}
         alt="Vantage Game"
       />
-      <div className={classes.overlay} />
       <Box
         component="section"
         className={classes.container}

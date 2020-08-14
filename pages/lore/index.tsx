@@ -1,22 +1,45 @@
 import * as React from 'react';
 import Head from 'next/head';
-// Material UI
-import {Typography} from '@material-ui/core';
+// Types and type guards
+import type {LoreEntry as LoreEntryType} from '@vantage/types';
+import type {GetStaticProps} from 'next';
+// Lib
+import {getAllEntries} from '@vantage/lib/lore';
 // Components
+import {LoreEntry} from 'page-components/lore';
 import {Layout} from '@vantage/components';
+
+type Props = {
+  loreEntries: Array<Omit<LoreEntryType, 'content'>>;
+};
 
 const siteTitle = 'The Lore of Vantage';
 
-const Lore: React.FC = () => (
+const Lore: React.FC<Props> = (props) => (
   <>
     <Head>
       <title>{siteTitle}</title>
       <meta name="og:title" content={siteTitle} />
     </Head>
     <Layout heading="Here you'll find everything about the lore of Vantage.">
-      <Typography>Lorem Ipsum</Typography>
+      {props.loreEntries.map((loreEntry, index) => (
+        <LoreEntry
+          key={loreEntry.id}
+          loreEntry={loreEntry}
+          isLast={index === props.loreEntries.length - 1}
+        />
+      ))}
     </Layout>
   </>
 );
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const loreEntries = await getAllEntries();
+  return {
+    props: {
+      loreEntries,
+    },
+  };
+};
 
 export default Lore;

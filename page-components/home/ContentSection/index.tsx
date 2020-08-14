@@ -2,32 +2,37 @@ import * as React from 'react';
 import clsx from 'clsx';
 import {useKeenSlider} from 'keen-slider/react';
 // Material UI
-import {useMediaQuery, IconButton} from '@material-ui/core';
+import {useMediaQuery, Typography, IconButton} from '@material-ui/core';
+import {useTheme} from '@material-ui/core/styles';
 import {NavigateBeforeRounded, NavigateNextRounded} from '@material-ui/icons';
-// Types
-import type {NewsPost} from '@vantage/types/news';
+// Types and type guards
+import type {ContentSectionContents} from '@vantage/types';
+import {isNewsPostArray, isLoreEntryArray, isConceptArtArray} from '@vantage/types/type-guards';
 // Components
-import NewsItem from './components/NewsItem';
+import {ConceptArt, LoreEntry, NewsItem} from './components';
 // Styles
 import {useStyles} from './styles';
 
 type Props = {
-  newsExcerpts: Array<Omit<NewsPost, 'content'>>;
+  content: ContentSectionContents;
+  type: 'News' | 'Lore' | 'Concept Art';
   containerWidth: number;
 };
 
 const NewsCarousel: React.FC<Props> = (props) => {
+  // Hooks
+  const hasTouch = useMediaQuery('(hover: none)');
+  const theme = useTheme();
+
   // Variables
   const initial = 0;
+  const contentWidth = props.containerWidth - 2 * theme.spacing(2);
 
   // State
   const [currentSlide, setCurrentSlide] = React.useState(initial);
 
-  // Hooks
-  const hasTouch = useMediaQuery('(hover: none)');
-
-  const [sliderRef, slider] = useKeenSlider({
-    slidesPerView: props.containerWidth / (props.containerWidth - 32),
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+    slidesPerView: props.containerWidth / contentWidth,
     initial,
     controls: hasTouch,
     spacing: 10,
@@ -38,7 +43,7 @@ const NewsCarousel: React.FC<Props> = (props) => {
   // Styles
   const classes = useStyles();
 
-  const renderNavigation = (sliderComponent: React.ReactElement) =>
+  const renderContentSection = (sliderComponent: React.ReactElement) =>
     slider ? (
       hasTouch ? (
         sliderComponent
@@ -81,11 +86,31 @@ const NewsCarousel: React.FC<Props> = (props) => {
       )
     ) : null;
 
-  return renderNavigation(
-    <section ref={sliderRef} className={clsx('keen-slider', classes.container)}>
-      {props.newsExcerpts.map((newsExcerpt, index) => (
-        <NewsItem key={newsExcerpt.id} newsExcerpt={newsExcerpt} index={index} />
-      ))}
+  const renderContent = () =>
+    isNewsPostArray(props.content, props.type)
+      ? props.content.map((newsExcerpt, index) => (
+          <NewsItem key={newsExcerpt.id} newsExcerpt={newsExcerpt} index={index} />
+        ))
+      : isLoreEntryArray(props.content, props.type)
+      ? props.content.map((loreEntry, index) => (
+          <LoreEntry key={loreEntry.id} loreEntry={loreEntry} index={index} />
+        ))
+      : isConceptArtArray(props.content, props.type)
+      ? props.content.map((path, index) => (
+          <ConceptArt key={path} path={path} width={contentWidth} index={index} />
+        ))
+      : null;
+
+  return (
+    <section>
+      <Typography variant="h5" className={classes.subsectionHeading}>
+        {props.type}
+      </Typography>
+      {renderContentSection(
+        <div ref={sliderRef} className={clsx('keen-slider', classes.container)}>
+          {renderContent()}
+        </div>
+      )}
     </section>
   );
 };

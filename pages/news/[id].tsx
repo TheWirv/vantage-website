@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
-// Types
-import type {NewsPost as NewsPostType} from '@vantage/types/news';
+// Types and type guards
+import type {NewsPost as NewsPostType} from '@vantage/types';
 import type {GetStaticProps, GetStaticPaths} from 'next';
 // Lib
 import {getPostData, getIds} from '@vantage/lib/news';

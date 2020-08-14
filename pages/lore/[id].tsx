@@ -1,22 +1,48 @@
 import * as React from 'react';
 import Head from 'next/head';
-// Material UI
-import {Typography} from '@material-ui/core';
+// Types and type guards
+import type {LoreEntry as LoreEntryType} from '@vantage/types';
+import type {GetStaticProps, GetStaticPaths} from 'next';
+// Lib
+import {getLoreEntryData, getIds} from '@vantage/lib/lore';
 // Components
 import {Layout} from '@vantage/components';
 
-const siteTitle = 'Lore 1';
+type Props = {
+  data: Omit<LoreEntryType, 'summary'>;
+};
 
-const LoreEntry: React.FC = () => (
+type Id = {
+  id: string;
+};
+
+const LoreEntry: React.FC<Props> = (props) => (
   <>
     <Head>
-      <title>{siteTitle}</title>
-      <meta name="og:title" content={siteTitle} />
+      <title>{props.data.title}</title>
+      <meta name="og:title" content={props.data.title} />
     </Head>
-    <Layout heading="Lore 1">
-      <Typography>Lorem Ipsum</Typography>
+    <Layout heading={props.data.title} component="article">
+      <section dangerouslySetInnerHTML={{__html: props.data.content}} />
     </Layout>
   </>
 );
+
+export const getStaticProps: GetStaticProps<Props, Id> = async (context) => {
+  const data = await getLoreEntryData(context.params!.id);
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths<Id> = async () => {
+  const paths = getIds().map((id) => ({params: id}));
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 export default LoreEntry;

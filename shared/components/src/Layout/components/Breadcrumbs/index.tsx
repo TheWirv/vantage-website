@@ -7,7 +7,7 @@ import {NavigateNext} from '@material-ui/icons';
 import Link from '../../../Link';
 
 type Props = {
-  newsHeading?: string;
+  deepLevelTitle?: string;
 };
 
 const Breadcrumbs: React.FC<Props> = (props) => {
@@ -31,7 +31,9 @@ const Breadcrumbs: React.FC<Props> = (props) => {
         const isLast = index === pathnames.length - 1;
         const href = `/${pathnames.slice(0, index + 1).join('/')}`;
         const linkText =
-          router.pathname.indexOf('/news/') !== -1 ? props.newsHeading! : breadcrumbNameMap[href];
+          router.pathname.indexOf('/news/') !== -1 || router.pathname.indexOf('/lore/') !== -1
+            ? props.deepLevelTitle!
+            : breadcrumbNameMap[href];
 
         return isLast ? (
           <Typography color="textPrimary" key={href}>

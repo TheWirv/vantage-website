@@ -8,6 +8,10 @@ export const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up('sm')]: {
         margin: theme.spacing(0, -3),
       },
+      marginBottom: theme.spacing(2),
+    },
+    subsectionHeading: {
+      marginBottom: theme.spacing(1),
     },
     navigationWrapper: {
       position: 'relative',

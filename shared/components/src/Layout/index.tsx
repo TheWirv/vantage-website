@@ -16,40 +16,38 @@ type Props = {
   heading: string;
   component?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
   onHome?: boolean;
-  marginTop?: string;
 };
 
 const Layout: React.FC<Props> = (props) => {
-  const {onHome, marginTop} = props;
-  const styleProps: StyleProps = {onHome, marginTop};
+  const {onHome} = props;
+  const styleProps: StyleProps = {onHome};
   const classes = useStyles(styleProps);
 
   const router = useRouter();
   const rootRoute = router.pathname.split('/').filter((x) => x)[0];
-  const newsHeading: string | undefined = rootRoute === 'news' ? props.heading : undefined;
+  const breadcrumbDeepLevelTitle: string | undefined =
+    rootRoute === 'news' || rootRoute === 'lore' ? props.heading : undefined;
 
   return (
     <>
       <Header />
       <ElevateOnScroll>
-        <>
-          <Paper component="main" square className={classes.main} elevation={0}>
-            {props.onHome ? (
-              <>{props.children}</>
-            ) : (
-              <Container
-                maxWidth="md"
-                className={classes.container}
-                component={props.component ?? 'div'}>
-                <Breadcrumbs newsHeading={newsHeading} />
-                <Typography variant="h4" className={classes.title}>
-                  {props.heading}
-                </Typography>
-                {props.children}
-              </Container>
-            )}
-          </Paper>
-        </>
+        <Paper component="main" square className={classes.main}>
+          {props.onHome ? (
+            <>{props.children}</>
+          ) : (
+            <Container
+              maxWidth="md"
+              className={classes.container}
+              component={props.component ?? 'div'}>
+              <Breadcrumbs deepLevelTitle={breadcrumbDeepLevelTitle} />
+              <Typography variant="h4" className={classes.title}>
+                {props.heading}
+              </Typography>
+              {props.children}
+            </Container>
+          )}
+        </Paper>
       </ElevateOnScroll>
       <Footer />
       <ScrollToTop>

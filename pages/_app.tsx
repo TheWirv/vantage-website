@@ -3,13 +3,11 @@ import Head from 'next/head';
 // Material UI
 import {ThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// Types
+// Types and type guards
 import type {AppProps} from 'next/app';
 // Styles
 import {theme} from '@vantage/styles';
 import 'keen-slider/keen-slider.min.css';
-import 'fontsource-roboto/latin-400-normal.css';
-import 'fontsource-roboto/latin-700-normal.css';
 import 'fontsource-lora/latin-400-normal.css';
 import 'fontsource-lora/latin-700-normal.css';
 import 'fontsource-cinzel-decorative/latin-400-normal.css';

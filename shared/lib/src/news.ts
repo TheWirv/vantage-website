@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 // types
-import type {NewsPost} from '@vantage/types/news';
+import type {NewsPost} from '@vantage/types';
 
 type MatterData = Pick<NewsPost, 'date' | 'title'>;
 
@@ -13,7 +13,7 @@ const postsDirectory = path.join(process.cwd(), 'data/news');
 export const getHomePosts = async () => (await getAllPosts()).slice(0, 3);
 
 export const getIds = (): Array<{id: string}> => {
-  // Get file names under ./data
+  // Get file names under ./data/news
   const fileNames = fs.readdirSync(postsDirectory);
 
   return fileNames.map((fileName) => ({
@@ -22,7 +22,7 @@ export const getIds = (): Array<{id: string}> => {
 };
 
 export const getAllPosts = async () => {
-  // Get file names under ./data
+  // Get file names under ./data/news
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = await Promise.all(
     fileNames.map((fileName) => getExcerptData(fileName.replace(/\.md$/, '')))
