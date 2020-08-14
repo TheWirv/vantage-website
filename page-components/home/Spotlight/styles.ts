@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       top: 48,
       width: '100%',
       backgroundColor: '#08080888',
-      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2.4}px)`,
+      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 1.5}px)`,
       height: '25vh',
       [theme.breakpoints.up('sm')]: {
         height: '33vh',
