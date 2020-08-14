@@ -31,7 +31,7 @@ const App = (props: AppProps) => {
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Vantage Game" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <meta property="og:image" content="/images/car-on-fire.jpg" />
+        <meta property="og:image" content="/images/vantage-map.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <ThemeProvider theme={theme}>
