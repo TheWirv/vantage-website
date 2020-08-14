@@ -8,6 +8,7 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  Divider,
 } from '@material-ui/core';
 import {Menu} from '@material-ui/icons';
 // Components
@@ -35,7 +36,7 @@ const Header: React.FC<Props> = (props) => {
       <ElevateOnScroll {...props}>
         <AppBar position="fixed">
           <Toolbar variant="dense" className={classes.toolbar}>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h5" className={classes.title}>
               <Link href="/">Vantage</Link>
             </Typography>
             <Hidden xsDown>
@@ -55,18 +56,23 @@ const Header: React.FC<Props> = (props) => {
           </Toolbar>
           <Hidden smUp>
             <Collapse in={isMenuOpenend} timeout={400} className={classes.collapse}>
+              <Divider />
               <Typography variant="h6" className={classes.collapseLink}>
                 <HeaderLink href="/news">News</HeaderLink>
               </Typography>
+              <Divider />
               <Typography variant="h6" className={classes.collapseLink}>
                 <HeaderLink href="/lore">Lore</HeaderLink>
               </Typography>
+              <Divider />
               <Typography variant="h6" className={classes.collapseLink}>
                 <HeaderLink href="/concept-art">Concept Art</HeaderLink>
               </Typography>
+              <Divider />
               <Typography variant="h6" className={classes.collapseLink}>
                 <HeaderLink href="/team">Team</HeaderLink>
               </Typography>
+              <Divider />
               <Typography variant="h6" className={classes.collapseLink}>
                 <HeaderLink href="/join">Join</HeaderLink>
               </Typography>

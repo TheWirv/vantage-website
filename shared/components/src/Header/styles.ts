@@ -8,6 +8,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+      marginTop: theme.spacing(0.75),
     },
     linkGroup: {
       '& > * + *': {
@@ -18,7 +19,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.background.default,
     },
     collapseLink: {
-      margin: theme.spacing(1),
+      margin: theme.spacing(1, 2),
     },
   })
 );
