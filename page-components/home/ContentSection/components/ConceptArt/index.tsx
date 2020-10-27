@@ -1,9 +1,7 @@
-import * as React from 'react';
 import clsx from 'clsx';
-// Material UI
-import {Card} from '@material-ui/core';
 // Types and type guards
 import type {ConceptArtPath} from '@vantage/types';
+import type {FunctionComponent} from 'react';
 // Styles
 import {useStyles, StyleProps} from './styles';
 
@@ -13,7 +11,7 @@ type Props = {
   width: number;
 };
 
-const ConceptArt: React.FC<Props> = (props) => {
+const ConceptArt: FunctionComponent<Props> = (props) => {
   const styleProps: StyleProps = {width: props.width};
   const classes = useStyles(styleProps);
 

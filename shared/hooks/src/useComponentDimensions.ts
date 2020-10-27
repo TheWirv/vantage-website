@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 // Hooks
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
@@ -12,7 +12,7 @@ const useComponentDimensions = (
     offsetY: componentRef.current?.offsetTop ?? 0,
   });
 
-  const [dimensions, setDimensions] = React.useState(getDimensions());
+  const [dimensions, setDimensions] = useState(getDimensions());
 
   useIsomorphicLayoutEffect(() => {
     const handleResize = () => {

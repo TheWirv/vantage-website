@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 // Material UI
 import {
   AppBar,
@@ -11,6 +11,8 @@ import {
   Divider,
 } from '@material-ui/core';
 import {Menu} from '@material-ui/icons';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 // Components
 import Link from '../Link';
 import ElevateOnScroll from '../ElevateOnScroll';
@@ -22,9 +24,9 @@ type Props = {
   home?: boolean;
 };
 
-const Header: React.FC<Props> = (props) => {
+const Header: FunctionComponent<Props> = (props) => {
   // State
-  const [isMenuOpenend, setMenuOpenend] = React.useState(false);
+  const [isMenuOpenend, setMenuOpenend] = useState(false);
 
   // Styles
   const classes = useStyles();

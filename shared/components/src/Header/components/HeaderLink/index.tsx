@@ -1,4 +1,5 @@
-import * as React from 'react';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 // Components
 import {Link} from '@vantage/components';
 // Styles
@@ -9,7 +10,7 @@ type Props = {
   href: string;
 };
 
-const HeaderLink: React.FC<Props> = (props) => {
+const HeaderLink: FunctionComponent<Props> = (props) => {
   const classes = useStyles();
 
   return (

@@ -1,7 +1,7 @@
-import * as React from 'react';
 import Head from 'next/head';
 // Types and type guards
 import type {NewsPost} from '@vantage/types';
+import type {FunctionComponent} from 'react';
 import type {GetStaticProps} from 'next';
 // Lib
 import {getAllPosts} from '@vantage/lib/news';
@@ -15,7 +15,7 @@ type Props = {
 
 const siteTitle = 'Vantage News';
 
-const News: React.FC<Props> = (props) => (
+const News: FunctionComponent<Props> = (props) => (
   <>
     <Head>
       <title>{siteTitle}</title>

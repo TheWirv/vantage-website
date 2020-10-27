@@ -1,7 +1,7 @@
-import * as React from 'react';
 import Head from 'next/head';
 // Types and type guards
 import type {LoreEntry as LoreEntryType} from '@vantage/types';
+import type {FunctionComponent} from 'react';
 import type {GetStaticProps} from 'next';
 // Lib
 import {getAllEntries} from '@vantage/lib/lore';
@@ -15,7 +15,7 @@ type Props = {
 
 const siteTitle = 'The Lore of Vantage';
 
-const Lore: React.FC<Props> = (props) => (
+const Lore: FunctionComponent<Props> = (props) => (
   <>
     <Head>
       <title>{siteTitle}</title>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import clsx from 'clsx';
 import {useKeenSlider} from 'keen-slider/react';
 // Material UI
@@ -7,11 +7,13 @@ import {useTheme} from '@material-ui/core/styles';
 import {NavigateBeforeRounded, NavigateNextRounded} from '@material-ui/icons';
 // Types and type guards
 import type {ContentSectionContents} from '@vantage/types';
+import type {FunctionComponent} from 'react';
 import {isNewsPostArray, isLoreEntryArray, isConceptArtArray} from '@vantage/types/type-guards';
 // Components
 import {ConceptArt, LoreEntry, NewsItem} from './components';
 // Styles
 import {useStyles} from './styles';
+import 'keen-slider/keen-slider.min.css';
 
 type Props = {
   content: ContentSectionContents;
@@ -19,7 +21,7 @@ type Props = {
   containerWidth: number;
 };
 
-const NewsCarousel: React.FC<Props> = (props) => {
+const NewsCarousel: FunctionComponent<Props> = (props) => {
   // Hooks
   const hasTouch = useMediaQuery('(hover: none)');
   const theme = useTheme();
@@ -29,7 +31,7 @@ const NewsCarousel: React.FC<Props> = (props) => {
   const contentWidth = props.containerWidth - 2 * theme.spacing(2);
 
   // State
-  const [currentSlide, setCurrentSlide] = React.useState(initial);
+  const [currentSlide, setCurrentSlide] = useState(initial);
 
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     slidesPerView: props.containerWidth / contentWidth,

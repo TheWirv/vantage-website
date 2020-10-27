@@ -1,8 +1,9 @@
-import * as React from 'react';
 import {useRouter} from 'next/router';
 // Material UI
 import {Breadcrumbs as MuiBreadcrumbs, Typography} from '@material-ui/core';
 import {NavigateNext} from '@material-ui/icons';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 // Components
 import Link from '../../../Link';
 
@@ -10,7 +11,7 @@ type Props = {
   deepLevelTitle?: string;
 };
 
-const Breadcrumbs: React.FC<Props> = (props) => {
+const Breadcrumbs: FunctionComponent<Props> = (props) => {
   const breadcrumbNameMap: {[id: string]: string} = {
     '/news': 'News',
     '/lore': 'Lore',

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 // Hooks
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
@@ -17,7 +17,7 @@ const undefinedDimensions = {
 };
 
 const useWindowDimensions = () => {
-  const [dimensions, setDimensions] = React.useState<{width?: number; height?: number}>(
+  const [dimensions, setDimensions] = useState<{width?: number; height?: number}>(
     undefinedDimensions
   );
 

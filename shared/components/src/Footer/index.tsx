@@ -1,12 +1,13 @@
-import * as React from 'react';
 // Material UI
 import {Container, Typography} from '@material-ui/core';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 // Components
 import Link from '../Link';
 // Styles
 import {useStyles} from './styles';
 
-const Footer: React.FC = () => {
+const Footer: FunctionComponent = () => {
   const classes = useStyles();
 
   return (

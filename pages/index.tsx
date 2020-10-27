@@ -1,10 +1,11 @@
-import * as React from 'react';
+import {createRef} from 'react';
 import Head from 'next/head';
 // Material UI
 import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 import {Box, Container, Typography} from '@material-ui/core';
 // Types and type guards
 import type {ConceptArtPath, LoreEntry, NewsPost} from '@vantage/types';
+import type {FunctionComponent} from 'react';
 import type {GetStaticProps} from 'next';
 // Lib
 import {getHomeConceptArt} from '@vantage/lib/concept-art';
@@ -24,9 +25,9 @@ type Props = {
 
 const siteTitle = 'Vantage Game';
 
-const Home: React.FC<Props> = (props) => {
+const Home: FunctionComponent<Props> = (props) => {
   // Refs
-  const newsSliderRef = React.createRef<HTMLDivElement>();
+  const newsSliderRef = createRef<HTMLDivElement>();
 
   // Hooks
   const {width: newsSliderWidth} = useComponentDimensions(newsSliderRef);

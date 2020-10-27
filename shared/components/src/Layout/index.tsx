@@ -1,8 +1,9 @@
-import * as React from 'react';
 import {useRouter} from 'next/router';
 // Material UI
 import {Container, Fab, Paper, Typography} from '@material-ui/core';
 import {KeyboardArrowUp} from '@material-ui/icons';
+// Types and type guards
+import type {ReactElement, ElementType, HTMLAttributes, FunctionComponent} from 'react';
 // Components
 import Header from '../Header';
 import Footer from '../Footer';
@@ -12,13 +13,13 @@ import {Breadcrumbs, ScrollToTop} from './components';
 import {useStyles, StyleProps} from './styles';
 
 type Props = {
-  children: React.ReactElement | React.ReactElement[];
+  children: ReactElement | ReactElement[];
   heading: string;
-  component?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
+  component?: ElementType<HTMLAttributes<HTMLElement>>;
   onHome?: boolean;
 };
 
-const Layout: React.FC<Props> = (props) => {
+const Layout: FunctionComponent<Props> = (props) => {
   const {onHome} = props;
   const styleProps: StyleProps = {onHome};
   const classes = useStyles(styleProps);

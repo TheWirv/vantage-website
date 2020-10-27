@@ -1,9 +1,9 @@
-import * as React from 'react';
 import clsx from 'clsx';
 // Material UI
 import {Card, Typography} from '@material-ui/core';
 // Types and type guards
 import type {NewsPost} from '@vantage/types';
+import type {FunctionComponent} from 'react';
 // Styles
 import {useStyles} from './styles';
 
@@ -12,7 +12,7 @@ type Props = {
   index: number;
 };
 
-const NewsItem: React.FC<Props> = (props) => {
+const NewsItem: FunctionComponent<Props> = (props) => {
   const classes = useStyles();
 
   return (

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import {useState} from 'react';
 // Hooks
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 const useScrollPosition = () => {
-  const [scrollPosition, setPosition] = React.useState(0);
+  const [scrollPosition, setPosition] = useState(0);
 
   useIsomorphicLayoutEffect(() => {
     const updatePosition = () => setPosition(window.pageYOffset);

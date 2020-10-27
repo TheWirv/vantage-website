@@ -1,7 +1,7 @@
-import * as React from 'react';
 import Head from 'next/head';
 // Types and type guards
 import type {NewsPost as NewsPostType} from '@vantage/types';
+import type {FunctionComponent} from 'react';
 import type {GetStaticProps, GetStaticPaths} from 'next';
 // Lib
 import {getPostData, getIds} from '@vantage/lib/news';
@@ -16,7 +16,7 @@ type Id = {
   id: string;
 };
 
-const NewsPost: React.FC<Props> = (props) => (
+const NewsPost: FunctionComponent<Props> = (props) => (
   <>
     <Head>
       <title>{props.data.title}</title>

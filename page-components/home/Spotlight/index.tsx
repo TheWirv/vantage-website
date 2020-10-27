@@ -1,14 +1,16 @@
-import * as React from 'react';
+import {createRef} from 'react';
 // Material UI
 import {Box, Typography} from '@material-ui/core';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 // Hooks
 import {useScrollPosition, useComponentDimensions, useIsomorphicLayoutEffect} from '@vantage/hooks';
 // Styles
 import {useStyles, StyleProps} from './styles';
 
-const Spotlight: React.FC = () => {
+const Spotlight: FunctionComponent = () => {
   // Refs
-  const imageRef = React.createRef<HTMLImageElement>();
+  const imageRef = createRef<HTMLImageElement>();
 
   // Hooks
   const scrollPosition = useScrollPosition();

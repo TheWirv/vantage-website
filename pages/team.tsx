@@ -1,13 +1,14 @@
-import * as React from 'react';
 import Head from 'next/head';
 // Material UI
 import {Typography} from '@material-ui/core';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 // Components
 import {Layout} from '@vantage/components';
 
 const siteTitle = 'Team';
 
-const Team: React.FC = () => (
+const Team: FunctionComponent = () => (
   <>
     <Head>
       <title>{siteTitle}</title>

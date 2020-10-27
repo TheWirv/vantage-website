@@ -1,10 +1,11 @@
-import * as React from 'react';
 // Material UI
 import {Zoom, useScrollTrigger} from '@material-ui/core';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 // Styles
 import {useStyles} from './styles';
 
-const ScrollToTop: React.FC<{children: React.ReactElement}> = (props) => {
+const ScrollToTop: FunctionComponent<{children: React.ReactElement}> = (props) => {
   const classes = useStyles();
   const trigger = useScrollTrigger({
     disableHysteresis: true,

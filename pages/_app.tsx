@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useEffect} from 'react';
 import Head from 'next/head';
 // Material UI
 import {ThemeProvider} from '@material-ui/core/styles';
@@ -7,7 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import type {AppProps} from 'next/app';
 // Styles
 import {theme} from '@vantage/styles';
-import 'keen-slider/keen-slider.min.css';
 import 'fontsource-lora/latin-400-normal.css';
 import 'fontsource-lora/latin-700-normal.css';
 import 'fontsource-cinzel-decorative/latin-400-normal.css';
@@ -16,7 +15,7 @@ import 'fontsource-cinzel-decorative/latin-700-normal.css';
 const App = (props: AppProps) => {
   const {Component, pageProps} = props;
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
 

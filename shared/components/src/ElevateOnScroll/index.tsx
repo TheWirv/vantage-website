@@ -1,18 +1,20 @@
-import * as React from 'react';
+import {cloneElement} from 'react';
 // Material UI
 import {useScrollTrigger} from '@material-ui/core';
+// Types and type guards
+import type {FunctionComponent} from 'react';
 
 type Props = {
   children: React.ReactElement;
 };
 
-const ElevateOnScroll: React.FC<Props> = (props) => {
+const ElevateOnScroll: FunctionComponent<Props> = (props) => {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
   });
 
-  return React.cloneElement(props.children, {
+  return cloneElement(props.children, {
     elevation: trigger ? 4 : 0,
   });
 };
