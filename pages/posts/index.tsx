@@ -19,7 +19,7 @@ const Posts: FunctionComponent = () => {
     if (entries.items) {
       return entries.items;
     }
-    console.error(`Error getting entries for ${contentType.name}.`);
+    // console.error(`Error getting entries for ${contentType.name}.`);
   };
 
   const [posts, setPosts] = useState([]);
@@ -27,7 +27,7 @@ const Posts: FunctionComponent = () => {
   useEffect(() => {
     const getPosts = async () => {
       const allPosts = await fetchEntries();
-      setPosts([...allPosts]);
+      // setPosts([...allPosts]);
     };
     getPosts();
   }, []);
@@ -39,18 +39,18 @@ const Posts: FunctionComponent = () => {
         <meta name="og:title" content={siteTitle} />
       </Head>
       <Layout heading="You'll find news here.">
-        {posts.length > 0
+        {/* {posts.length > 0
           ? posts.map((p) => (
               <Post
                 key={p.fields.title}
                 alt={p.fields.alt}
                 date={p.fields.date}
-                image={p.fields.image2}
+                image={p.fields.image2.fields.file.url}
                 title={p.fields.title}
                 url={p.fields.url}
               />
             ))
-          : null}
+          : null} */}
       </Layout>
     </>
   );

@@ -1,9 +1,21 @@
-const Post = ({alt, date, image, title, url}) => {
+const Post = ({
+  alt,
+  date,
+  image,
+  title,
+  url,
+}: {
+  alt: string;
+  date: string;
+  image: string;
+  title: string;
+  url: string;
+}) => {
   console.log('image:', image);
   return (
     <div className="container">
       <a href={url}>
-        <img alt={alt} src={image.fields.file.url} />
+        <img alt={alt} src={image} />
       </a>
       <div className="text">
         <h2>{title}</h2>
