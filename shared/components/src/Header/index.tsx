@@ -34,57 +34,54 @@ const Header: FunctionComponent<Props> = (props) => {
   const toggleMenu = () => setMenuOpenend((prev) => !prev);
 
   return (
-    <>
-      <ElevateOnScroll {...props}>
-        <AppBar position="fixed">
-          <Toolbar variant="dense" className={classes.toolbar}>
-            <Typography variant="h5" className={classes.title}>
-              <Link href="/">Vantage</Link>
+    <ElevateOnScroll {...props}>
+      <AppBar position="fixed">
+        <Toolbar className={classes.toolbar}>
+          <Typography variant="h5" className={classes.title}>
+            <Link href="/">Vantage</Link>
+          </Typography>
+          <Hidden xsDown>
+            <Typography className={classes.linkGroup}>
+              <HeaderLink href="/news">News</HeaderLink>
+              <HeaderLink href="/lore">Lore</HeaderLink>
+              <HeaderLink href="/concept-art">Concept Art</HeaderLink>
+              <HeaderLink href="/team">Team</HeaderLink>
+              <HeaderLink href="/join">Join</HeaderLink>
             </Typography>
-            <Hidden xsDown>
-              <Typography className={classes.linkGroup}>
-                <HeaderLink href="/news">News</HeaderLink>
-                <HeaderLink href="/lore">Lore</HeaderLink>
-                <HeaderLink href="/concept-art">Concept Art</HeaderLink>
-                <HeaderLink href="/team">Team</HeaderLink>
-                <HeaderLink href="/join">Join</HeaderLink>
-              </Typography>
-            </Hidden>
-            <Hidden smUp>
-              <IconButton onClick={toggleMenu} aria-label="menu">
-                <Menu />
-              </IconButton>
-            </Hidden>
-          </Toolbar>
-          <Hidden smUp>
-            <Collapse in={isMenuOpenend} timeout={400} className={classes.collapse}>
-              <Divider />
-              <Typography variant="h6" className={classes.collapseLink}>
-                <HeaderLink href="/news">News</HeaderLink>
-              </Typography>
-              <Divider />
-              <Typography variant="h6" className={classes.collapseLink}>
-                <HeaderLink href="/lore">Lore</HeaderLink>
-              </Typography>
-              <Divider />
-              <Typography variant="h6" className={classes.collapseLink}>
-                <HeaderLink href="/concept-art">Concept Art</HeaderLink>
-              </Typography>
-              <Divider />
-              <Typography variant="h6" className={classes.collapseLink}>
-                <HeaderLink href="/team">Team</HeaderLink>
-              </Typography>
-              <Divider />
-              <Typography variant="h6" className={classes.collapseLink}>
-                <HeaderLink href="/join">Join</HeaderLink>
-              </Typography>
-            </Collapse>
-            <Backdrop open={isMenuOpenend} transitionDuration={400} onClick={toggleMenu} />
           </Hidden>
-        </AppBar>
-      </ElevateOnScroll>
-      <Toolbar variant="dense" id="back-to-top-anchor" />
-    </>
+          <Hidden smUp>
+            <IconButton onClick={toggleMenu} aria-label="menu">
+              <Menu />
+            </IconButton>
+          </Hidden>
+        </Toolbar>
+        <Hidden smUp>
+          <Collapse in={isMenuOpenend} timeout={400} className={classes.collapse}>
+            <Divider />
+            <Typography variant="h6" className={classes.collapseLink}>
+              <HeaderLink href="/news">News</HeaderLink>
+            </Typography>
+            <Divider />
+            <Typography variant="h6" className={classes.collapseLink}>
+              <HeaderLink href="/lore">Lore</HeaderLink>
+            </Typography>
+            <Divider />
+            <Typography variant="h6" className={classes.collapseLink}>
+              <HeaderLink href="/concept-art">Concept Art</HeaderLink>
+            </Typography>
+            <Divider />
+            <Typography variant="h6" className={classes.collapseLink}>
+              <HeaderLink href="/team">Team</HeaderLink>
+            </Typography>
+            <Divider />
+            <Typography variant="h6" className={classes.collapseLink}>
+              <HeaderLink href="/join">Join</HeaderLink>
+            </Typography>
+          </Collapse>
+          <Backdrop open={isMenuOpenend} transitionDuration={400} onClick={toggleMenu} />
+        </Hidden>
+      </AppBar>
+    </ElevateOnScroll>
   );
 };
 

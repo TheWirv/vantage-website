@@ -7,12 +7,12 @@ export const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.background.default,
     },
     title: {
-      flexGrow: 1,
       marginTop: theme.spacing(0.75),
+      marginRight: theme.spacing(6),
     },
     linkGroup: {
       '& > * + *': {
-        marginLeft: theme.spacing(2),
+        marginLeft: theme.spacing(3),
       },
     },
     collapse: {

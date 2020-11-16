@@ -1,4 +1,4 @@
-import {parseISO, format} from 'date-fns';
+import {DateTime} from 'luxon';
 // Types and type guards
 import type {FunctionComponent} from 'react';
 
@@ -7,8 +7,8 @@ type Props = {
 };
 
 const Date: FunctionComponent<Props> = (props) => {
-  const date = parseISO(props.dateString);
-  return <time dateTime={props.dateString}>{format(date, 'LLLL d, yyyy')}</time>;
+  const date = DateTime.fromISO(props.dateString);
+  return <time dateTime={props.dateString}>{date.toLocaleString()}</time>;
 };
 
 export default Date;

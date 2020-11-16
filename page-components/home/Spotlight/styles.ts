@@ -1,40 +1,46 @@
 // Material UI
-import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
+import {makeStyles, createStyles} from '@material-ui/core/styles';
+// Types and type guards
+import type {Theme} from '@material-ui/core/styles';
 
 export type StyleProps = {
   scrollPosition: number;
   imageHeight: number;
+  chevronWidth: number;
 };
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
-      position: 'fixed',
-      top: 48,
       width: '100%',
-      backgroundColor: '#08080888',
-      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 1.5}px)`,
-      height: '25vh',
-      [theme.breakpoints.up('sm')]: {
-        height: '33vh',
-      },
-      [theme.breakpoints.up('md')]: {
-        height: '50vh',
-      },
-      [theme.breakpoints.up('lg')]: {
-        height: '75vh',
-      },
+      height: '100vh',
     },
     image: {
       position: 'fixed',
-      top: 48,
+      top: 0,
+      left: 0,
       width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 3}px)`,
       zIndex: -100,
-      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2}px)`,
+    },
+    overlay: {
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#08080888',
+      zIndex: -50,
     },
     title: {
-      zIndex: -80,
+      position: 'fixed',
+      transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2}px)`,
       fontSize: (props: StyleProps) => `${props.imageHeight / 8.5}px`,
+    },
+    scrollDownIcon: {
+      position: 'absolute',
+      left: '50%',
+      bottom: theme.spacing(2),
+      marginLeft: (props: StyleProps) => -1 * (props.chevronWidth / 2),
     },
   })
 );

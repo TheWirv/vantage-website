@@ -7,17 +7,11 @@ export type StyleProps = {
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    backToTop: {
+      width: '100%',
+      height: 0,
+    },
     main: {
-      marginTop: (props: StyleProps) => (props.onHome ? '25vh' : undefined),
-      [theme.breakpoints.up('sm')]: {
-        marginTop: (props: StyleProps) => (props.onHome ? '33vh' : undefined),
-      },
-      [theme.breakpoints.up('md')]: {
-        marginTop: (props: StyleProps) => (props.onHome ? '50vh' : undefined),
-      },
-      [theme.breakpoints.up('lg')]: {
-        marginTop: (props: StyleProps) => (props.onHome ? '75vh' : undefined),
-      },
       marginBottom: theme.spacing(24),
       backgroundColor: (props: StyleProps) =>
         !props.onHome ? theme.palette.background.default : '#0000',

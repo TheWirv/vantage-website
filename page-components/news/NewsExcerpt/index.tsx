@@ -26,7 +26,7 @@ const NewsExcerpt: FunctionComponent<Props> = (props) => {
         </Link>
       </Typography>
       <Typography variant="subtitle2" className={classes.subtitle}>
-        {'written on '}
+        {'posted on '}
         <Date dateString={props.newsExcerpt.date} />
       </Typography>
       <section dangerouslySetInnerHTML={{__html: props.newsExcerpt.excerpt}} />

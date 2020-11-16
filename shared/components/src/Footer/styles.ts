@@ -1,6 +1,10 @@
 // Material UI
 import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 
+export type StyleProps = {
+  scrollPosition: number;
+};
+
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     footer: {
@@ -9,7 +13,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       right: 0,
       left: 0,
       height: theme.spacing(24),
-      zIndex: -50,
+      zIndex: (props: StyleProps) => (props.scrollPosition > theme.spacing(24) * 2 ? -80 : -120),
       backgroundColor: theme.palette.grey[900],
     },
     container: {

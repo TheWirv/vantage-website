@@ -31,6 +31,7 @@ const Layout: FunctionComponent<Props> = (props) => {
 
   return (
     <>
+      <span id="back-to-top-anchor" className={classes.backToTop} />
       <Header />
       <ElevateOnScroll>
         <Paper component="main" square className={classes.main}>
