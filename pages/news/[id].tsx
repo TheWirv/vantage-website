@@ -4,12 +4,12 @@ import type {NewsPost as NewsPostType} from '@vantage/types';
 import type {FunctionComponent} from 'react';
 import type {GetStaticProps, GetStaticPaths} from 'next';
 // Lib
-import {getPostData, getIds} from '@vantage/lib/news';
+// import {getPostData, getIds} from '@vantage/lib/news';
 // Components
 import {Layout} from '@vantage/components';
 
 type Props = {
-  data: Omit<NewsPostType, 'excerpt'>;
+  // data: Omit<NewsPostType, 'excerpt'>;
 };
 
 type Id = {
@@ -19,30 +19,30 @@ type Id = {
 const NewsPost: FunctionComponent<Props> = (props) => (
   <>
     <Head>
-      <title>{props.data.title}</title>
-      <meta name="og:title" content={props.data.title} />
+      <title>{'Title' /* props.data.title */}</title>
+      <meta name="og:title" content={'Title' /* props.data.title */} />
     </Head>
-    <Layout heading={props.data.title} component="article">
-      <section dangerouslySetInnerHTML={{__html: props.data.content}} />
+    <Layout heading={'Title' /* props.data.title */} component="article">
+      <p>Content</p>
     </Layout>
   </>
 );
 
-export const getStaticProps: GetStaticProps<Props, Id> = async (context) => {
-  const data = await getPostData(context.params!.id);
-  return {
-    props: {
-      data,
-    },
-  };
-};
+// export const getStaticProps: GetStaticProps<Props, Id> = async (context) => {
+//   const data = await getPostData(context.params!.id);
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// };
 
-export const getStaticPaths: GetStaticPaths<Id> = async () => {
-  const paths = getIds().map((id) => ({params: id}));
-  return {
-    paths,
-    fallback: false,
-  };
-};
+// export const getStaticPaths: GetStaticPaths<Id> = async () => {
+//   const paths = getIds().map((id) => ({params: id}));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
 export default NewsPost;

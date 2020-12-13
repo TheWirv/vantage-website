@@ -1,16 +1,16 @@
-import {LoreEntry, NewsPost, ConceptArtPath, ContentSectionContents} from './index';
+import {LoreEntry, NewsPost, ContentSectionContents} from './index';
 
 export const isNewsPostArray = (
   content: ContentSectionContents,
-  type: 'News' | 'Lore' | 'Concept Art'
-): content is Array<Omit<NewsPost, 'content'>> => type === 'News';
+  type: 'news' | 'lore' | 'concept-art'
+): content is Array<Omit<NewsPost, 'content'>> => type === 'news';
 
 export const isLoreEntryArray = (
   content: ContentSectionContents,
-  type: 'News' | 'Lore' | 'Concept Art'
-): content is Array<Omit<LoreEntry, 'content'>> => type === 'Lore';
+  type: 'news' | 'lore' | 'concept-art'
+): content is Array<Omit<LoreEntry, 'content'>> => type === 'lore';
 
 export const isConceptArtArray = (
   content: ContentSectionContents,
-  type: 'News' | 'Lore' | 'Concept Art'
-): content is ConceptArtPath[] => type === 'Concept Art';
+  type: 'news' | 'lore' | 'concept-art'
+): content is string[] => type === 'concept-art';

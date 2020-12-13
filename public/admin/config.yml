@@ -1,12 +1,21 @@
 backend:
-  name: "git-gateway"
+  name: "test-repo"
   branch: "preview"
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
   - name: "news"
     label: "News Posts"
-    folder: "data/news"
+    folder: "content/news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     # filter:     => filter based on specific fields
@@ -15,4 +24,16 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "lore"
+    label: "Lore Entries"
+    folder: "content/lore"
+    create: true
+    slug: "{{slug}}"
+    # filter:     => filter based on specific fields
+    #   field: language
+    #   value: en
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Sort Order", name: "sort-order", widget: "number" }
       - { label: "Body", name: "body", widget: "markdown" }

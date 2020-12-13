@@ -1,7 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-// types
-import type {ConceptArtPath} from '@vantage/types';
 
 const conceptArtDirectory = path.join(process.cwd(), 'public/images/concept-art');
 
@@ -12,7 +10,7 @@ export const getIds = (): Array<{id: string}> => {
   const fileNames = fs.readdirSync(conceptArtDirectory);
 
   return fileNames.map((fileName) => ({
-    id: fileName.replace(/\.md$/, ''),
+    id: fileName.replace(/\.jpg$|\.jpeg$|\.png$/, ''),
   }));
 };
 

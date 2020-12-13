@@ -9,6 +9,11 @@ import {NavigateBeforeRounded, NavigateNextRounded} from '@material-ui/icons';
 import type {ContentSectionContents} from '@vantage/types';
 import type {FunctionComponent} from 'react';
 import {isNewsPostArray, isLoreEntryArray, isConceptArtArray} from '@vantage/types/type-guards';
+// Content
+import {
+  attributes,
+  react as NewsContent,
+} from '../../../content/news/2020-08-02-finally-got-everything-up-and-running.md';
 // Components
 import {ConceptArt, LoreEntry, NewsItem} from './components';
 // Styles
@@ -16,8 +21,8 @@ import {useStyles} from './styles';
 import 'keen-slider/keen-slider.min.css';
 
 type Props = {
-  content: ContentSectionContents;
-  type: 'News' | 'Lore' | 'Concept Art';
+  content?: ContentSectionContents;
+  type: 'news' | 'lore' | 'concept-art';
   containerWidth: number;
 };
 
@@ -89,19 +94,23 @@ const NewsCarousel: FunctionComponent<Props> = (props) => {
     ) : null;
 
   const renderContent = () =>
-    isNewsPostArray(props.content, props.type)
-      ? props.content.map((newsExcerpt, index) => (
+    props.content ? (
+      isNewsPostArray(props.content, props.type) ? (
+        props.content.map((newsExcerpt, index) => (
           <NewsItem key={newsExcerpt.id} newsExcerpt={newsExcerpt} index={index} />
         ))
-      : isLoreEntryArray(props.content, props.type)
-      ? props.content.map((loreEntry, index) => (
+      ) : isLoreEntryArray(props.content, props.type) ? (
+        props.content.map((loreEntry, index) => (
           <LoreEntry key={loreEntry.id} loreEntry={loreEntry} index={index} />
         ))
-      : isConceptArtArray(props.content, props.type)
-      ? props.content.map((path, index) => (
+      ) : isConceptArtArray(props.content, props.type) ? (
+        props.content.map((path, index) => (
           <ConceptArt key={path} path={path} width={contentWidth} index={index} />
         ))
-      : null;
+      ) : null
+    ) : (
+      <NewsContent />
+    );
 
   return (
     <section>

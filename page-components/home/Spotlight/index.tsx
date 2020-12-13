@@ -25,9 +25,9 @@ const Spotlight: FunctionComponent = () => {
     <Box className={classes.container}>
       <img
         ref={imageRef}
-        src="/images/vantage-map.png"
+        src="/images/uploads/vantage-map.png"
         className={classes.image}
-        alt="Vantage Game"
+        alt="Vantage Map"
       />
       <Box className={classes.overlay} display="flex" alignItems="center" justifyContent="center">
         <Typography variant="h4" className={classes.title}>

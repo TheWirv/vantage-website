@@ -4,7 +4,7 @@ import type {LoreEntry as LoreEntryType} from '@vantage/types';
 import type {FunctionComponent} from 'react';
 import type {GetStaticProps, GetStaticPaths} from 'next';
 // Lib
-import {getLoreEntryData, getIds} from '@vantage/lib/lore';
+// import {getLoreEntryData, getIds} from '@vantage/lib/lore';
 // Components
 import {Layout} from '@vantage/components';
 
@@ -19,30 +19,30 @@ type Id = {
 const LoreEntry: FunctionComponent<Props> = (props) => (
   <>
     <Head>
-      <title>{props.data.title}</title>
-      <meta name="og:title" content={props.data.title} />
+      <title>{'Title' /* props.data.title */}</title>
+      <meta name="og:title" content={'Title' /* props.data.title */} />
     </Head>
-    <Layout heading={props.data.title} component="article">
-      <section dangerouslySetInnerHTML={{__html: props.data.content}} />
+    <Layout heading={'Title' /* props.data.title */} component="article">
+      <p>Content</p>
     </Layout>
   </>
 );
 
-export const getStaticProps: GetStaticProps<Props, Id> = async (context) => {
-  const data = await getLoreEntryData(context.params!.id);
-  return {
-    props: {
-      data,
-    },
-  };
-};
+// export const getStaticProps: GetStaticProps<Props, Id> = async (context) => {
+//   const data = await getLoreEntryData(context.params!.id);
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// };
 
-export const getStaticPaths: GetStaticPaths<Id> = async () => {
-  const paths = getIds().map((id) => ({params: id}));
-  return {
-    paths,
-    fallback: false,
-  };
-};
+// export const getStaticPaths: GetStaticPaths<Id> = async () => {
+//   const paths = getIds().map((id) => ({params: id}));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
 export default LoreEntry;

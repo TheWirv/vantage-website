@@ -4,13 +4,13 @@ import Head from 'next/head';
 import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 import {Box, Container, Typography} from '@material-ui/core';
 // Types and type guards
-import type {ConceptArtPath, LoreEntry, NewsPost} from '@vantage/types';
+import type {LoreEntry, NewsPost} from '@vantage/types';
 import type {FunctionComponent} from 'react';
 import type {GetStaticProps} from 'next';
 // Lib
 import {getHomeConceptArt} from '@vantage/lib/concept-art';
-import {getHomeLoreEntries} from '@vantage/lib/lore';
-import {getHomePosts} from '@vantage/lib/news';
+// import {getHomeLoreEntries} from '@vantage/lib/lore';
+// import {getHomePosts} from '@vantage/lib/news';
 // Hooks
 import {useComponentDimensions} from '@vantage/hooks';
 // Components
@@ -18,9 +18,9 @@ import {Spotlight, ContentSection} from 'page-components/home';
 import {Layout} from '@vantage/components';
 
 type Props = {
-  newsExcerpts: Array<Omit<NewsPost, 'content'>>;
-  loreEntries: Array<Omit<LoreEntry, 'content'>>;
-  conceptArtPaths: ConceptArtPath[];
+  // newsExcerpts: Array<Omit<NewsPost, 'content'>>;
+  // loreEntries: Array<Omit<LoreEntry, 'content'>>;
+  conceptArtPaths: string[];
 };
 
 const siteTitle = 'Vantage Game';
@@ -45,18 +45,20 @@ const Home: FunctionComponent<Props> = (props) => {
         <Spotlight />
         <Box className={classes.wrapper}>
           <Container maxWidth="md" ref={newsSliderRef} className={classes.container}>
-            <ContentSection
-              type="News"
-              containerWidth={newsSliderWidth}
-              content={props.newsExcerpts}
-            />
-            <ContentSection
-              type="Lore"
+            {
+              <ContentSection
+                type="news"
+                containerWidth={newsSliderWidth}
+                // content={props.newsExcerpts}
+              />
+              /* <ContentSection
+              type="lore"
               containerWidth={newsSliderWidth}
               content={props.loreEntries}
-            />
+            /> */
+            }
             <ContentSection
-              type="Concept Art"
+              type="concept-art"
               containerWidth={newsSliderWidth}
               content={props.conceptArtPaths}
             />
@@ -69,13 +71,13 @@ const Home: FunctionComponent<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const newsExcerpts = await getHomePosts();
-  const loreEntries = await getHomeLoreEntries();
+  // const newsExcerpts = await getHomePosts();
+  // const loreEntries = await getHomeLoreEntries();
   const conceptArtPaths = getHomeConceptArt();
   return {
     props: {
-      newsExcerpts,
-      loreEntries,
+      // newsExcerpts,
+      // loreEntries,
       conceptArtPaths,
     },
   };
