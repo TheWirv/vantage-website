@@ -20,7 +20,6 @@ const LoreEntry: FunctionComponent<Props> = (props) => {
       component="article"
       className={clsx(`keen-slider__slide number-slide${props.index + 1}`, classes.card)}>
       <Typography>{props.loreEntry.title}</Typography>
-      <section dangerouslySetInnerHTML={{__html: props.loreEntry.summary}} />
     </Card>
   );
 };
