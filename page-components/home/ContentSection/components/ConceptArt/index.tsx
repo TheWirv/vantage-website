@@ -1,12 +1,11 @@
 import clsx from 'clsx';
 // Types and type guards
-import type {ConceptArtPath} from '@vantage/types';
 import type {FunctionComponent} from 'react';
 // Styles
 import {useStyles, StyleProps} from './styles';
 
 type Props = {
-  path: ConceptArtPath;
+  path: string;
   index: number;
   width: number;
 };
