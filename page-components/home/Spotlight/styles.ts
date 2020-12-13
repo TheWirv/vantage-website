@@ -5,7 +5,6 @@ import type {Theme} from '@material-ui/core/styles';
 
 export type StyleProps = {
   scrollPosition: number;
-  imageHeight: number;
   chevronWidth: number;
 };
 
@@ -25,6 +24,13 @@ export const useStyles = makeStyles((theme: Theme) =>
       transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 3}px)`,
       zIndex: -100,
     },
+    overlayContainer: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100vh',
+    },
     overlay: {
       width: '100%',
       height: '100%',
@@ -32,9 +38,8 @@ export const useStyles = makeStyles((theme: Theme) =>
       zIndex: -50,
     },
     title: {
-      position: 'fixed',
       transform: (props: StyleProps) => `translateY(-${props.scrollPosition / 2}px)`,
-      fontSize: (props: StyleProps) => `${props.imageHeight / 8.5}px`,
+      fontSize: '8rem',
     },
     scrollDownIcon: {
       position: 'absolute',
