@@ -25,7 +25,6 @@ const LoreEntry: FunctionComponent<Props> = (props) => {
           {props.loreEntry.title}
         </Link>
       </Typography>
-      <section dangerouslySetInnerHTML={{__html: props.loreEntry.summary}} />
     </Card>
   );
 };

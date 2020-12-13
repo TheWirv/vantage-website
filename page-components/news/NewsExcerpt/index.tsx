@@ -29,7 +29,6 @@ const NewsExcerpt: FunctionComponent<Props> = (props) => {
         {'posted on '}
         <Date dateString={props.newsExcerpt.date} />
       </Typography>
-      <section dangerouslySetInnerHTML={{__html: props.newsExcerpt.excerpt}} />
     </Card>
   );
 };
