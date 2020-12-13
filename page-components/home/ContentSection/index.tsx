@@ -13,6 +13,7 @@ import {isNewsPostArray, isLoreEntryArray, isConceptArtArray} from '@vantage/typ
 import {
   attributes,
   react as NewsContent,
+  // @ts-ignore: This import obviosly doesn't have any kind of type declaration
 } from '../../../content/news/2020-08-02-finally-got-everything-up-and-running.md';
 // Components
 import {ConceptArt, LoreEntry, NewsItem} from './components';
