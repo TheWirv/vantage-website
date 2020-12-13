@@ -1,6 +1,9 @@
 backend:
-  name: "test-repo"
+  name: "github"
+  repo: "TheWirv/vantage-website"
   branch: "preview"
+  base_url: "https://vantage-website-git-preview.thewirv.vercel.app"
+  auth_endpoint: "api/begin"
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 collections:

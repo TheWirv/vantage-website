@@ -33,4 +33,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-.vercel
+# environment is handled via Vercel UI
+.env
