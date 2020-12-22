@@ -8,6 +8,9 @@
       "@vantage/lib/*": [
         "./shared/lib/src/*"
       ],
+      "@vantage/page-components/*": [
+        "./page-components/*"
+      ],
       "@vantage/types/*": [
         "./shared/types/src/*"
       ],

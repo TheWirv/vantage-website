@@ -6,7 +6,7 @@ import type {GetStaticProps} from 'next';
 // Lib
 // import {getAllEntries} from '@vantage/lib/lore';
 // Components
-import {LoreEntry} from 'page-components/lore';
+import {LoreEntry} from '@vantage/page-components/lore';
 import {Layout} from '@vantage/components';
 
 type Props = {

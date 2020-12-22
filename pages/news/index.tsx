@@ -6,7 +6,7 @@ import type {GetStaticProps} from 'next';
 // Lib
 // import {getAllPosts} from '@vantage/lib/news';
 // Components
-import {NewsExcerpt} from 'page-components/news';
+import {NewsExcerpt} from '@vantage/page-components/news';
 import {Layout} from '@vantage/components';
 
 type Props = {

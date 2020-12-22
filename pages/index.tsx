@@ -14,7 +14,7 @@ import {getHomeConceptArt} from '@vantage/lib/concept-art';
 // Hooks
 import {useComponentDimensions} from '@vantage/hooks';
 // Components
-import {Spotlight, ContentSection} from 'page-components/home';
+import {Spotlight, ContentSection} from '@vantage/page-components/home';
 import {Layout} from '@vantage/components';
 
 type Props = {

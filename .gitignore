@@ -33,5 +33,15 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdk
+!.yarn/versions
+!.yarn/build-state.yml
+!.yarn/unplugged
+
 # environment is handled via Vercel UI
 .env
