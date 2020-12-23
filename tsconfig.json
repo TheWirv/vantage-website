@@ -1,18 +1,21 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "components/*": [
-        "./components"
+      "@vantage/*": [
+        "./shared/*/src"
       ],
-      "lib/*": [
-        "./lib"
+      "@vantage/lib/*": [
+        "./shared/lib/src/*"
+      ],
+      "@vantage/page-components/*": [
+        "./page-components/*"
+      ],
+      "@vantage/types/*": [
+        "./shared/types/src/*"
       ],
       "styles/*": [
         "./styles"
-      ],
-      "types/*": [
-        "./types"
       ],
     },
     "target": "esnext",
@@ -23,7 +26,10 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,

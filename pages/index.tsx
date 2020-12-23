@@ -1,57 +1,102 @@
-import * as React from 'react';
+import {createRef} from 'react';
 import Head from 'next/head';
-import styles from 'styles/Home.module.scss';
+// Material UI
+import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
+import {Box, Container, Typography} from '@material-ui/core';
+// Types and type guards
+import type {LoreEntry, NewsPost} from '@vantage/types';
+import type {FunctionComponent} from 'react';
+import type {GetStaticProps} from 'next';
+// Lib
+import {getHomeConceptArt} from '@vantage/lib/concept-art';
+// import {getHomeLoreEntries} from '@vantage/lib/lore';
+// import {getHomePosts} from '@vantage/lib/news';
+// Hooks
+import {useComponentDimensions} from '@vantage/hooks';
+// Components
+import {Spotlight, ContentSection} from '@vantage/page-components/home';
+import {Layout} from '@vantage/components';
 
-const Home: React.FC = () => (
-  <div className={styles.container}>
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+type Props = {
+  // newsExcerpts: Array<Omit<NewsPost, 'content'>>;
+  // loreEntries: Array<Omit<LoreEntry, 'content'>>;
+  conceptArtPaths: string[];
+};
 
-    <main className={styles.main}>
-      <h1 className={styles.title}>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+const siteTitle = 'Vantage Game';
 
-      <p className={styles.description}>
-        Get started by editing <code className={styles.code}>pages/index.js</code>
-      </p>
+const Home: FunctionComponent<Props> = (props) => {
+  // Refs
+  const newsSliderRef = createRef<HTMLDivElement>();
 
-      <div className={styles.grid}>
-        <a href="https://nextjs.org/docs" className={styles.card}>
-          <h3>Documentation &rarr;</h3>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+  // Hooks
+  const {width: newsSliderWidth} = useComponentDimensions(newsSliderRef);
 
-        <a href="https://nextjs.org/learn" className={styles.card}>
-          <h3>Learn &rarr;</h3>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
+  // Styles
+  const classes = useStyles();
 
-        <a href="https://github.com/vercel/next.js/tree/master/examples" className={styles.card}>
-          <h3>Examples &rarr;</h3>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
+  return (
+    <>
+      <Head>
+        <title>{siteTitle}</title>
+        <meta name="og:title" content={siteTitle} />
+      </Head>
+      <Layout onHome heading="">
+        <Spotlight />
+        <Box className={classes.wrapper}>
+          <Container maxWidth="md" ref={newsSliderRef} className={classes.container}>
+            {
+              <ContentSection
+                type="news"
+                containerWidth={newsSliderWidth}
+                // content={props.newsExcerpts}
+              />
+              /* <ContentSection
+              type="lore"
+              containerWidth={newsSliderWidth}
+              content={props.loreEntries}
+            /> */
+            }
+            <ContentSection
+              type="concept-art"
+              containerWidth={newsSliderWidth}
+              content={props.conceptArtPaths}
+            />
+            <Typography>Wanna join the team? Here's our Discord:</Typography>
+          </Container>
+        </Box>
+      </Layout>
+    </>
+  );
+};
 
-        <a
-          href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className={styles.card}>
-          <h3>Deploy &rarr;</h3>
-          <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-        </a>
-      </div>
-    </main>
-
-    <footer className={styles.footer}>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer">
-        Powered by <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-      </a>
-    </footer>
-  </div>
-);
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  // const newsExcerpts = await getHomePosts();
+  // const loreEntries = await getHomeLoreEntries();
+  const conceptArtPaths = getHomeConceptArt();
+  return {
+    props: {
+      // newsExcerpts,
+      // loreEntries,
+      conceptArtPaths,
+    },
+  };
+};
 
 export default Home;
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    wrapper: {
+      position: 'relative',
+      zIndex: 0,
+      backgroundColor: theme.palette.background.default,
+    },
+    container: {
+      padding: theme.spacing(2, 2),
+      [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(2, 3),
+      },
+    },
+  })
+);
